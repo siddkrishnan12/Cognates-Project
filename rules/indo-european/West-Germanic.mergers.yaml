@@ -1,0 +1,7 @@
+# Mergers reversed in West-Germanic.lsc. DRAFT by Claude, awaiting team review.
+# Tag ¹ = first source, ² = second.
+- sound: r
+  sources: [r, z]        # W2 z > r
+- sound: uː
+  sources: [uː, oː]      # W5 oː > uː word-finally
+- optional_ending: z     # W2 final z > ∅

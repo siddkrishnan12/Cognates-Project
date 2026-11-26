@@ -1,0 +1,25 @@
+[project]
+name = "cognates"
+version = "0.1.0"
+description = "Test whether two Indo-European nouns are cognates"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "panphon==0.22.2",
+    "gensim==4.4.0",
+    "spacy==3.8.18",
+    "epitran==1.35.3",
+    "pyyaml==6.0.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.2.0"]
+
+[project.scripts]
+cognates = "cognates.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["cognates"]

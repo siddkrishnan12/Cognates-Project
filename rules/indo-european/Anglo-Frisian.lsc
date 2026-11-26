@@ -1,0 +1,96 @@
+# REVERSED: Anglo-Frisian -> West Germanic
+# Source: Index Diachronica 17.7.2.1 "West Germanic to Anglo-Frisian", contributed by
+#   Siride(?) and Pogostick Man, citing Wikipedia ("Anglo-Frisian languages", "Old Frisian",
+#   "Old English phonology", 2014).
+#   https://chridd.nfshost.com/diachronica/all#Anglo-Frisian
+# License: CC BY-NC-SA 3.0 (this derived file carries the same license; noncommercial use only).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Forward rules in the source, in its order:
+#   A1  a → ɑ̃ / _N (short only)
+#   A2  VN → Ṽː / _F                                   [Ingvaeonic nasal spirant law]
+#   A3  a → æː / short only, includes diphthongs ! B or *ã in next syllable
+#   A4  k ɡ → tʃ j(?)                                  [palatalization]
+#   A5  æː → aː "under the influence of neighboring consonants" (unspecified)
+#   A6  æː → eː
+#   A7  æu → au
+#   A8  aː → æː / ! _N or if nasalized                  [brightening of ā]
+#   A9  i o → e a / unstressed
+#   A10 ai au eu → {eː,aː} aː ia
+#   A11 a → æ / ! _N or if nasalized, or if *B or *ã in next syllable   [brightening of a]
+#   A12 ia iu → jaː juː
+#   A13 h → ∅ / V_V
+#   A14 {i,u} → ∅ / -# ! VC_
+#   (note) θ resists change to d until the 14th century — not a rule
+#
+# REVIEW NOTES — interpretations of an unclear section
+# - A3 and A11 both describe brightening of short a. A3's "æː" contradicts its own
+#   "short only", so both are read as a > æ. Every Anglo-Frisian æ reverses to a. Their
+#   conditions (not before nasals, not before a back vowel in the next syllable) are lost
+#   after later changes, so they are not checked.
+# - A5, A6 and A8 give long vowels whose order can't be untangled from the source. Read
+#   together with A10, they mean: Anglo-Frisian æː comes from aː; eː comes from eː, aː or
+#   ai; aː comes from aː, ai or au. These reverse as mergers (see the mergers file).
+# - A4 is unconditioned in the source; historically k ɡ palatalized only next to front
+#   vowels. Every tʃ reverses to k. Every j branches to j or ɡ. The sk > ʃ palatalization
+#   is missing from the source and not reversed.
+# - A9 "unstressed" can't be checked (cleaned IPA has no stress marks), so every a and e
+#   branches to o and i.
+# - A10 eu > ia and A12 ia > jaː chain together: jaː branches back to eu, and juː to iu.
+# - A13 (loss of h between vowels) is not reversed: restoring it would add an h between
+#   every pair of vowels.
+# - A14 (loss of final i u) is not reversed (team decision: vowel endings vanish when
+#   Step 6 strips vowels, and they multiply candidates).
+# - A2: a long nasal vowel before a fricative reverses to vowel + n, or vowel + m.
+# - Notation bridge (not a sound change): this section writes h where the source's
+#   Common Germanic section writes x, so h maps back to x last. Likewise ʍ (from the
+#   British English reversal of w) maps to Common Germanic xʷ.
+
+Symbol aː, eː, iː, oː, uː, æː, xʷ, tʃ, ɑ̃, ãː, ẽː, ĩː, õː, ũː
+
+Class nasal {m, n, ŋ}
+Class fricative {f, θ, s, x, h, β, ð, ɣ, z}
+
+# A12: ia iu > jaː juː
+glide-diphthongs:
+    j³ aː => i a
+    j³ uː => i u
+
+# A11 + A3: brightening a > æ
+brightening-short:
+    æ => a
+
+# A10: ai au eu > {eː,aː} aː ia
+diphthongs:
+    eː³ => a i
+    aː² => a i
+    aː³ => a u
+    i a => e u
+
+# A9: unstressed i o > e a
+unstressed:
+    a² => o
+    e² => i
+
+# A8, A6, A5: long vowels
+brightening-long:
+    æː => aː
+    eː² => aː
+
+# A4: palatalization
+palatalization:
+    tʃ => k
+    j² => ɡ
+
+# A2: nasal spirant law
+nasal-spirant:
+    {ãː², ẽː², ĩː², õː², ũː²} => {a m, e m, i m, o m, u m} / _ @fricative
+    {ãː, ẽː, ĩː, õː, ũː} => {a n, e n, i n, o n, u n} / _ @fricative
+
+# A1: a > ɑ̃ before nasals
+nasalization:
+    ɑ̃ => a / _ @nasal
+
+# Notation bridge: Common Germanic x is written h from here on, and xʷ as ʍ
+notation-h-to-x:
+    {h, ʍ} => {x, xʷ}

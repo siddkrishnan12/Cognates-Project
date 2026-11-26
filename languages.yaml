@@ -1,0 +1,53 @@
+# Supported languages: Wiktionary language code -> data file, tree stage and epitran fallback.
+# stage: the Index Diachronica stage id (tree/indo-european.json) whose target is this language.
+#   Each stage matches the variety of the first IPA Wiktionary lists for the language
+#   (English: Received Pronunciation; Sanskrit: Vedic).
+# processes: side-branch process sections this language passes through (none yet).
+# epitran: fallback grapheme-to-IPA code, or null when epitran lacks the language.
+# epitran_native: (optional) epitran code for the native script, used when an entry has no
+#   romanization for the Latin-script code to read.
+# lemma_ending: (optional) `missing` when Wiktionary gives this language's nouns without their
+#   nominative ending (Sanskrit lemmas are stems: vṛ́ka, not vṛ́kas). With the CLI switch
+#   --forgive-missing-endings (off by default), the other word's root may drop one final
+#   consonant at no cost in Step 6 (team decision 2026-11-24).
+# prefer_tag: (optional) Step 2 takes the first phonemic IPA carrying this Wiktionary tag,
+#   falling back to the first phonemic IPA.
+en:
+  name: English
+  kaikki: English.jsonl
+  stage: British-English
+  processes: []
+  epitran: null
+  prefer_tag: Received-Pronunciation
+got:
+  name: Gothic
+  kaikki: Gothic.jsonl
+  stage: Gothic
+  processes: []
+  epitran: got-Latn
+  epitran_native: got-Goth
+non:
+  name: Old Norse
+  kaikki: OldNorse.jsonl
+  stage: Old-Norse
+  processes: []
+  epitran: null
+ofs:
+  name: Old Frisian
+  kaikki: OldFrisian.jsonl
+  stage: Old-Frisian
+  processes: []
+  epitran: null
+nl:
+  name: Dutch
+  kaikki: Dutch.jsonl
+  stage: Modern-Dutch
+  processes: []
+  epitran: nld-Latn
+sa:
+  name: Sanskrit
+  kaikki: Sanskrit.jsonl
+  stage: Vedic-Sanskrit
+  processes: []
+  epitran: null
+  lemma_ending: missing

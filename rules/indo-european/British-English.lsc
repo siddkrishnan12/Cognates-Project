@@ -1,0 +1,74 @@
+# REVERSED: British English -> Early Modern English
+# Source: Index Diachronica 17.7.2.1.7 "Early Modern English to British English", contributed
+#   by Pogostick Man, citing FireSpeakerWiki ("English sound changes", 2013).
+#   https://chridd.nfshost.com/diachronica/all#British-English
+# License: CC BY-NC-SA 3.0 (this derived file carries the same license; noncommercial use only).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Forward rules in the source, in its order:
+#   B1  ɜːɹ ɑːɹ ɔːɹ eːɹ oːɹ iːɹ uːɹ → ɜː ɑː ɔː ɛə ɔə ɪə ʊə / syllable-finally   [non-rhoticity]
+#   B2  ɑ → ɒ                                                                 [LOT]
+#   B3  æ → æː → ɑː / _{F[-voiced],N[-voiced]}                                [BATH]
+#   B4  ɒ → ɒː → ɔː / _F[-voiced]                                             [CLOTH]
+#   B5  ʍ → w
+#   B6  l → ɫ / "in coda"
+#   B7  oʊ → əʊ
+#   (note) "LOT-CLOTH split reversed properly" — modern RP has ɒ again in cloth words
+#
+# HOW THIS FILE WORKS
+# One simultaneous block: each British English sound maps straight to its Early Modern
+# English source. Input is Wiktionary IPA, which keeps a word-final linking r as ɹ
+# (fɑːðə(ɹ) > fɑːðəɹ), so the r-restoring rules never add a second ɹ.
+#
+# REVIEW NOTES
+# - B1: ɜː ɪə ɛə ʊə come only from vowel + r, so they always get ɹ back. ɑː and ɔː branch:
+#   they may or may not have lost an r (heart vs. bath/father; more vs. thought).
+#   Wiktionary's ɛː spelling of SQUARE is accepted too. Modern RP merged ɔə into ɔː, so
+#   ɔː also branches to oːɹ.
+# - B3 reverses only before f θ s and n (the source's voiceless fricatives and nasal
+#   clusters, as in dance): ɑː there also branches to æ.
+# - Added by team request (not in the source): the lettER vowel. Wiktionary often writes
+#   a final ə without linking (ɹ) (mother /mʌðə/), so a word-final ə also branches to əɹ.
+# - B4 reverses only before f θ s: ɔː there also branches to ɑ (the source's ɒ).
+# - B5 reverses only word-initially: w also branches to ʍ.
+# - Step 2 takes Wiktionary's first phonemic IPA, which is sometimes General American
+#   (thought /θɔt/). Those forms reach this stage unchanged and reverse less well.
+
+Symbol ɑː, ɔː, ɜː, ɛː, eː, oː, iː, uː
+
+Class bath {f, θ, s, n}
+Class cloth {f, θ, s}
+
+bre-to-emode:
+    # B1: non-rhoticity
+    ɜː => ɜː / _ ɹ
+    ɜː => ɜː ɹ
+    ɪ ə => iː * / _ ɹ
+    ɪ ə => iː ɹ
+    ɛ ə => eː * / _ ɹ
+    ɛ ə => eː ɹ
+    ɛː => eː / _ ɹ
+    ɛː => eː ɹ
+    ʊ ə => uː * / _ ɹ
+    ʊ ə => uː ɹ
+    ɔ ə => oː * / _ ɹ
+    ɔ ə => oː ɹ
+    # B3 + B1: ɑː before f θ s n < ɑː, æ, ɑːɹ
+    ɑː² => æ / _ @bath
+    ɑː³ => ɑː ɹ / _ @bath
+    # B1: ɑː elsewhere < ɑː, ɑːɹ
+    ɑː² => ɑː ɹ // _ ɹ
+    # B4 + B1: ɔː before f θ s < ɔː, ɑ (ɒ), ɔːɹ, oːɹ
+    ɔː² => ɑ / _ @cloth
+    ɔː³ => ɔː ɹ / _ @cloth
+    ɔː⁴ => oː ɹ / _ @cloth
+    # B1: ɔː elsewhere < ɔː, ɔːɹ, oːɹ
+    ɔː² => ɔː ɹ // _ ɹ
+    ɔː³ => oː ɹ // _ ɹ
+    # Team addition: lettER, final ə < əɹ
+    ə² => ə ɹ / _ $
+    # B7, B6, B5, B2
+    ə ʊ => o ʊ
+    ɫ => l
+    w² => ʍ / $ _
+    ɒ => ɑ

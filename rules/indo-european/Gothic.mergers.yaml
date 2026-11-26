@@ -1,0 +1,24 @@
+# Mergers reversed in Gothic.lsc. DRAFT by Claude, awaiting team review.
+- sound: ɔ
+  before: [r, h, x]
+  sources: [u, au]            # G2; digraph au
+- sound: ɛ
+  before: [r, h, x, ʍ]
+  sources: [i, ai]            # G3; digraph ai
+- sound: ɔː
+  before: [a, e, i, o, u, ɛ, ɔ, aː, eː, iː, oː, uː, ɛː, ɔː, æː]
+  sources: [au, oːw]          # G12
+- sound: ɛː
+  before: [a, e, i, o, u, ɛ, ɔ, aː, eː, iː, oː, uː, ɛː, ɔː, æː]
+  sources: [ai, æːj]          # G12
+- sound: eː
+  sources: [æː, eː]           # G4
+- sound: f
+  sources: [f, β]             # G24 (final, or before final s)
+- sound: θ
+  sources: [θ, ð]             # G24
+- sound: x
+  sources: [x, ɣ]             # G24
+- sound: s
+  final: true
+  sources: [s, z]             # G27

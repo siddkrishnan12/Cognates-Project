@@ -1,0 +1,97 @@
+# REVERSED: Midlands Middle English -> Old English
+# Source: Index Diachronica 17.7.2.1.3 "Old English to Midlands Middle English", contributed
+#   by Pogostick Man, citing Moore (1919), Historical Outlines of English Phonology and
+#   Middle English Grammar, and Wikipedia ("Middle English phonology", 2011).
+#   https://chridd.nfshost.com/diachronica/all#Midlands-Middle-English
+# License: CC BY-NC-SA 3.0 (this derived file carries the same license; noncommercial use only).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Forward rules in the source, in its order:
+#   M1  Vː → V[-long] / _C{ː,C} ! _st{#,V} ...       [pre-cluster shortening]
+#   M2  eɑ eːɑ eo eːo → ɑ ɛː e eː                    [monophthongization]
+#   M3  æj → aj → ej
+#   M4  {æːj,e(ː)j} → ej
+#   M5  ɑɣ → ɑw
+#   M6  {eɑh,eɑç,eɑx,eɑʝ,eɑɣ} → ɑw
+#   M7  eːɑw iːw → ew ju
+#   M8  {ɑːw,ɑːɣ,oːw} → ɔːw
+#   M9  oɣ → ɔːw / _V
+#   M10 {ɑːht,o(ː)ht} → ow
+#   M11 ɑː y(ː) → ɔː i(ː)
+#   M12 ɑ e o → ɑː ɛː oː / in U[+open] ! ...          [open syllable lengthening]
+#   M13 Vː → V[-long] / in #U before a U with /iː/
+#   M14 m → n → ∅ / _# when unstressed
+#   M15 hn {wl,hl} hr → w l r
+#   M16 ɣ → ɡ / #_
+#   M17 ɣ → w / C_V
+#   M18 {e,ɑ,o} → ə → ∅ / _#
+#
+# HOW THIS FILE WORKS
+# Every rule is in one simultaneous block: each Middle English sound maps straight to its
+# Old English source, and no output is rewritten again. (Run in sequence, M11 ɔː > ɑː
+# would feed M12 ɑː > ɑ.) Tagged sub-rules come first; first match wins. Tags come from
+# the mergers file, where each entry says where it applies (before w, word-initial, ...).
+#
+# REVIEW NOTES
+# - Not reversed: M1 and M13 (vowel shortening): restoring a long vowel would branch every
+#   short vowel, and vowels are stripped before Step 6. M14 (loss of unstressed final m n):
+#   lemmas are nominative singular, which rarely ended in -m or -n in Old English.
+# - M15's output "w l r" for four inputs is read as: initial hn hl wl hr > n l l r.
+# - M18: any ə branches to e ɑ o. The lost final vowel is not added back (team decision:
+#   vowel endings vanish when Step 6 strips vowels, and they multiply candidates).
+# - M10 reverses only when "ow" stands before t, as in the source's "ht" clusters.
+# - Missing from the source and not reversed: OE æ > ME a, OE æː > ME ɛː ("sea" < sǣ).
+#   OE æ is harmless (Anglo-Frisian.lsc maps æ and a to the same West Germanic a).
+#   OE æː is not: ME ɛː from æː reconstructs as e or eːɑ.
+
+Symbol ɑː, ɛː, ɔː, oː, eː, iː, yː, æː
+
+Class vowel {ɑ, e, i, o, u, y, æ, ə, ɑː, ɛː, ɔː, oː, eː, iː, uː, yː, æː}
+Class cons {p, b, t, d, k, ɡ, f, v, θ, ð, s, z, ʃ, h, x, ç, ɣ, ʝ, m, n, ŋ, l, r, w, j}
+
+me-to-oe:
+    # M18: final-vowel reduction
+    ə² => ɑ
+    ə³ => o
+    ə => e
+    # M17, M16
+    w² => ɣ / @cons _ @vowel
+    ɡ² => ɣ / $ _
+    # M15: initial h, w lost before n l r
+    n² => h n / $ _
+    l² => h l / $ _
+    l³ => w l / $ _
+    r² => h r / $ _
+    # M10: ow < ɑːh oh oːh before t
+    o² w => ɑː h / _ t
+    o³ w => o h / _ t
+    o⁴ w => oː h / _ t
+    # M9, M8, M11: ɔːw < ɑːɣ oːw oɣ; ɔː < ɑː
+    ɔː² w => ɑː ɣ
+    ɔː³ w => oː w
+    ɔː⁴ w => o ɣ / _ @vowel
+    ɔː => ɑː
+    # M7: ew < eːɑw; ju < iːw
+    e² => eː ɑ / _ w
+    j² u => iː w
+    # M6, M5: ɑw < ɑɣ eɑh eɑʝ eɑɣ
+    ɑ² w => ɑ ɣ
+    ɑ³ w => e ɑ h
+    ɑ⁴ w => e ɑ ʝ
+    ɑ⁵ w => e ɑ ɣ
+    # M4, M3: ej < æj æːj eːj
+    e² => æ / _ j
+    e³ => æː / _ j
+    e⁴ => eː / _ j
+    # M12: open syllable lengthening (ME ɑː only from lengthening, since M11 took OE ɑː)
+    ɑː => ɑ
+    ɛː² => eː ɑ
+    ɛː => e
+    oː² => o
+    # M11: i iː < y yː
+    i² => y
+    iː² => yː
+    # M2: monophthongization ɑ e eː < eɑ eo eːo
+    ɑ² => e ɑ
+    e² => e o
+    eː² => eː o

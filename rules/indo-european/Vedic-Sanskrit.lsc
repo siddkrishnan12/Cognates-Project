@@ -1,0 +1,58 @@
+# REVERSED: Vedic Sanskrit -> Proto-Indo-Aryan
+# Source: Index Diachronica 17.10.1.5 "Proto-Indo-Aryan to Vedic Sanskrit", contributed by
+#   Tropylium, citing Kobayashi, Masato (2004), Historical Phonology of Old Indo-Aryan Consonants.
+#   https://chridd.nfshost.com/diachronica/all#Vedic-Sanskrit
+# License: CC BY-NC-SA 3.0 (this derived file carries the same license; noncommercial use only).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Forward rules in the source, in its order:
+#   V1  {s,ʂ} → h / _#C[- voice]        [visarga]
+#   V2  {s,ʂ} → r / _#C[+ voice]
+#   V3  l → r
+#   V4  ɖ(ʱ) → ɭ(ʱ)
+#   V5  sɕ ɕʂ → ɕː ʂː
+#   V6  sː ʂː ɕː → t.s t.ʂ t.C
+#   V7  t.ʂ t.ɕ → kʂ cʰː
+#   V8  cʰː → cʰ / C_
+#   V9  bzʱ → ps
+#   V10 {pʂ,cʂ,ɟʐʱ,ɡʐʱ} → kʂ
+#
+# HOW THIS FILE WORKS
+# One simultaneous block. Input is Wiktionary's Vedic IPA; the block also bridges its notation
+# to the Index's: ɐ ɑ(ː) → a(ː), ɾ → r, ʋ → w, t͡ɕ(ʰ) → c(ʰ), d͡ʑ(ʱ) → ɟ(ʱ).
+#
+# REVIEW NOTES
+# - V1, V2 are sandhi before a following word; they reverse only word-finally (final h > s ʂ,
+#   final r > s ʂ besides r l).
+# - V3: every r branches to l, and r̩ to l̩ (Indo-Aryan merged l into r).
+# - V5-V7, V10: kʂ reverses to kʂ ɕʂ ʂʂ pʂ cʂ ɟʐʱ ɡʐʱ; cʰ to cʰ or sɕ. The t.s step of V6 is
+#   not reversed separately.
+# - V9: ps branches to bzʱ.
+
+Symbol aː, iː, uː, eː, oː, ɑː, cʰ, ɟʱ, ɖʱ, ɭʱ, ʐʱ, r̩, l̩
+
+sa-to-pia:
+    # V1, V2, V3: final h, final r, r
+    h² => ʂ / _ $
+    h => s / _ $
+    ɾ² => l
+    ɾ³ => s / _ $
+    ɾ⁴ => ʂ / _ $
+    ɾ => r
+    r̩² => l̩
+    # V5-V7, V10: kʂ
+    k² ʂ => ɕ ʂ
+    k³ ʂ => ʂ ʂ
+    k⁴ ʂ => p ʂ
+    k⁵ ʂ => c ʂ
+    k⁶ ʂ => ɟ ʐʱ
+    k⁷ ʂ => ɡ ʐʱ
+    # V7, V8: cʰ < sɕ
+    t͡ɕʰ² => s ɕ
+    t͡ɕʰ => cʰ
+    # V9: ps < bzʱ
+    p² s => b zʱ
+    # V4
+    {ɭ, ɭʱ} => {ɖ, ɖʱ}
+    # Notation bridge (Wiktionary IPA -> Index)
+    {ɐ, ɑː, ɑ, ʋ, t͡ɕ, d͡ʑ, d͡ʑʱ} => {a, aː, a, w, c, ɟ, ɟʱ}

@@ -1,0 +1,88 @@
+# REVERSED: Gothic -> Common Germanic
+# Source: Index Diachronica 17.7.1 "Common Germanic to Gothic", contributed by Pogostick Man,
+#   citing Wright, Joseph (1910), Grammar of the Gothic Language, 2nd ed., and Wikipedia
+#   ("Gothic language", 2014).
+#   https://chridd.nfshost.com/diachronica/all#Gothic
+# License: CC BY-NC-SA 3.0 (this derived file carries the same license; noncommercial use only).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Forward rules in the source, in its order (numbered here; prose notes omitted):
+#   G1  o e → u i (stressed)
+#   G2  u → ɔ / _{r,h}
+#   G3  i → ɛ / _{r,h,ʍ}
+#   G4  æː → eː
+#   G5  ew → iw
+#   G6  V[- long] → ∅ / _# ! V = u
+#   G7  V[- long] → ∅ / U_C# ! V = u
+#   G8  aj → a / U_#
+#   G9  iw → ju / [- stress]
+#   G10 w → u̯ / V[- long]_{#,C}
+#   G11 w → ∅ / oː_j
+#   G12 oːw æːj → ɔː ɛː / _V
+#   G13 j → i / C_#
+#   G14 ij → iː / _s
+#   G15 ij → i / _#
+#   G16 Vw → u / _s
+#   G17 iji → iː / U[- stress](C…)_  (and in long closed stems)
+#   G18 i → ∅ / _ji
+#   G19 m → β / C[- voiced]_n (medial);  G20 m → ɸ / C[+ voiced]_n (medial)
+#   G21 nː → n / _C ! _j
+#   G22 β → b / {r,l}_
+#   G23 ð → d / C[+ voiced]_
+#   G24 β ð ɣ → ɸ θ x / V_(s)#        [final devoicing]
+#   G25 ɣ → ɡ / #_;  G26 ɣ → ɡ / C_V
+#   G27 z → s / _#
+#   G28 s → ∅ / V[- long]r_#
+#
+# HOW THIS FILE WORKS
+# One simultaneous block: each Gothic sound maps straight to its Common Germanic source.
+# Input is Wiktionary's Gothic IPA or epitran's (got-Latn); both write the digraphs ai au
+# as ɛ(ː) ɔ(ː).
+#
+# REVIEW NOTES
+# - G1 needs no reversal: the source's Common Germanic has no short e o.
+# - G2, G3 (breaking before r h ʍ): ɔ ɛ there reverse to u i by default, with au ai as
+#   branches. Elsewhere ɔ(ː) ɛ(ː) reverse to the diphthongs au ai (Wright's digraphs), and
+#   by G12 to oːw æːj before a vowel.
+# - G4: eː branches to æː (default) or eː (Common Germanic ē²).
+# - G22-G26: the source's Common Germanic has no b d ɡ, so Gothic b d ɡ reverse
+#   unconditionally to β ð ɣ. G24: final f θ x (before an optional s) branch to β ð ɣ.
+# - G27: final s branches to z.
+# - Not reversed: G6-G8, G13-G18, G28 (losses of final or unstressed vowels and endings;
+#   team decision: vowel endings are not restored), G9, G10, G11 (rare glide changes),
+#   G19-G21 (rare clusters).
+# - Notation bridge: Gothic h ƕ (ʍ) are Common Germanic x xʷ; epitran's ɪ is i.
+
+Symbol eː, æː, ɔː, ɛː, oː, iː, uː, kʷ, xʷ
+
+Class vowel {a, e, i, o, u, ɛ, ɔ, aː, eː, iː, oː, uː, ɛː, ɔː, æː}
+
+got-to-cg:
+    # G2, G3: breaking before r h ʍ
+    ɔ² => a u / _ {r, h, x}
+    ɔ => u / _ {r, h, x}
+    ɛ² => a i / _ {r, h, x, ʍ}
+    ɛ => i / _ {r, h, x, ʍ}
+    # G12: ɔː ɛː before a vowel < oːw æːj
+    ɔː² => oː w / _ @vowel
+    ɛː² => æː j / _ @vowel
+    # ai au digraphs
+    {ɔ, ɔː} => a u
+    {ɛ, ɛː} => a i
+    # G4: eː < æː (or ē²)
+    eː² => eː
+    eː => æː
+    # G5: iw < ew (the source's Common Germanic writes iu)
+    i w => i u
+    # G24, G27: final devoicing; final s < z
+    f² => β / _ $
+    f² => β / _ s $
+    θ² => ð / _ $
+    θ² => ð / _ s $
+    x² => ɣ / _ $
+    x² => ɣ / _ s $
+    s² => z / _ $
+    # G22-G26: b d ɡ < β ð ɣ
+    {b, d, ɡ} => {β, ð, ɣ}
+    # Notation bridge
+    {h, ʍ, ɪ} => {x, xʷ, i}

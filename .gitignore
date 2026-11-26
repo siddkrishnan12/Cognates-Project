@@ -1,0 +1,21 @@
+# Software installed on demand (README, Installation steps 2 and 3)
+.venv/
+tools/
+*.egg-info/
+build/
+dist/
+
+# Downloads and generated files (README, Installation steps 4 and 5)
+data/
+output/
+
+# Python and test caches
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# LaTeX leftovers from --tree runs outside output/
+*.aux
+
+# macOS
+.DS_Store

@@ -1,0 +1,17 @@
+# Mergers reversed in British-English.lsc. DRAFT by Claude, awaiting team review.
+- sound: ɑː
+  before: [f, θ, s, n]
+  sources: [ɑː, æ, ɑːɹ]          # B3, B1
+- sound: ɑː
+  sources: [ɑː, ɑːɹ]             # B1
+- sound: ɔː
+  before: [f, θ, s]
+  sources: [ɔː, ɒ, ɔːɹ, oːɹ]     # B4, B1
+- sound: ɔː
+  sources: [ɔː, ɔːɹ, oːɹ]        # B1
+- sound: w
+  initial: true
+  sources: [w, ʍ]                # B5
+- sound: ə
+  final: true
+  sources: [ə, əɹ]               # lettER (team)

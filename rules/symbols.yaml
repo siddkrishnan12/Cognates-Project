@@ -1,0 +1,45 @@
+# Reconstruction symbols -> IPA that PanPhon understands (Step 6).
+# DRAFT by Claude, awaiting team review.
+# Applied longest key first, after Unicode NFC normalization.
+# Values follow common laryngeal-theory phonetic guesses; change them freely.
+
+# Laryngeals
+h₁: ʔ
+h₂: χ
+h₃: χʷ
+H: χ          # laryngeal of unknown quality (team decision: same value as h₂)
+h1: ʔ
+h2: χ
+h3: χʷ
+
+# Palatovelars (Wiktionary acute notation and Index Diachronica's ɡ́)
+ḱ: c
+ǵ: ɟ
+ǵʰ: ɟʰ
+ǵʱ: ɟʰ
+ɡ́: ɟ
+ɡ́ʰ: ɟʰ
+ɡ́ʱ: ɟʰ
+k̂: c
+ĝ: ɟ
+
+# Breathy-voiced stops: PanPhon lacks ʱ, so write them as aspirated voiced stops
+bʱ: bʰ
+dʱ: dʰ
+ɡʱ: ɡʰ
+ɟʱ: ɟʰ
+ɡʷʱ: ɡʷʰ
+dʒʱ: dʒʰ
+# Breathy fricatives (Bartholomae's law, Indo-Iranian): PanPhon has no zʰ, so use breathy voice
+zʱ: z̤
+ʐʱ: ʐ̤
+ʒʱ: ʒ̤
+
+# ASCII stand-ins
+g: ɡ
+
+# Syllabic resonants written with a ring below
+r̥: r̩
+l̥: l̩
+m̥: m̩
+n̥: n̩

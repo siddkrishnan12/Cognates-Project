@@ -1,0 +1,102 @@
+# REVERSED: Early Modern English -> Midlands Middle English
+# Source: Index Diachronica 17.7.2.1.4 "Midlands Middle English to Early Modern English",
+#   contributed by Pogostick Man, citing FireSpeakerWiki ("English sound changes", 2013).
+#   https://chridd.nfshost.com/diachronica/all#Early-Modern-English
+# License: CC BY-NC-SA 3.0 (this derived file carries the same license; noncommercial use only).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Forward rules in the source, in its order:
+#   E1  ʊ → ɤ ! P_ and _l                              [FOOT-STRUT split]
+#   E2  mb ŋɡ → m ŋ / _#
+#   E3  tj sj dj zj → tʃ ʃ dʒ ʒ / ! _uː                [yod coalescence]
+#   E4  a ɑ {ɛ,ɪ,ɤ} → ɑː ɔː ɜː / _ɹ{C,#}
+#   E5  ɑʊ → ɑː / _P
+#   E6  ɑʊ → ɑː / _N (sometimes)
+#   E7  ɑʊ → ɔː / else
+#   (note) many ɑː later became ɔː "for non-phonetic reasons" — not a rule
+#   E8  a → ɑː / "in a few words, like 'father'"
+#   E9  a → æ / else                                   [TRAP]
+#   E10 əɪ əʊ → ɑi æʊ / "in some parts of South-Eastern England"
+#   E11 əɪ əʊ → aɪ aʊ / "in most of Britain"
+#   E12 eː oː → eɪ oʊ / ! _ɹ
+#
+# HOW THIS FILE WORKS
+# One simultaneous block, as in Midlands-Middle-English.lsc: each Early Modern English sound
+# maps straight to its Middle English source, and no output is rewritten again.
+#
+# REVIEW NOTES
+# - E10 is a regional variant; British English follows E11, so only E11 is reversed.
+# - E1: modern IPA writes the STRUT vowel ʌ; both ʌ and the source's ɤ reverse to ʊ.
+# - E4 reverses only directly before ɹ (r): ɜː branches to ɛ ɪ ʊ, ɔː to ɑ, ɑː to a.
+# - E8 ("father") reverses as a branch on every ɑː.
+# - Notation bridge (not a sound change): this section writes lax ɪ ɛ ʊ, a and ɹ where the
+#   Middle English section writes i e u, ɑ and r.
+# - Added by team request (not in the source): the Great Vowel Shift. The source has it
+#   in neither this section nor the Middle English one, though E11 starts from its
+#   intermediate əɪ əʊ. Forward: iː > əɪ > aɪ, uː > əʊ > aʊ, eː > iː, ɛː > eː > iː,
+#   oː > uː, ɔː > oː (> oʊ by E12), ɑː > ɛː > eː (> eɪ by E12). Each modern vowel maps
+#   straight to its Middle English source, branching where the Shift merged vowels:
+#     iː < eː or ɛː (meet, meat);  eɪ < ɑː or ej (name, day);  oʊ < ɔː, ɔːw or ow;
+#     eː before r < ɑː or ɛː;  oː before r < ɔː or oː;
+#     ʊ ʌ < u, or < oː shortened after the Shift (foot, blood).
+# - Added by team request (not in the source): the loss of x/ç (gh) before t.
+#   aɪ before t also branches to ME ih (night < niht); ɔː before t also branches to ME ow,
+#   which Midlands-Middle-English.lsc (M10) takes back to OE oh ɑːh oːh (daughter < dohtor).
+#   The Index's Middle English writes h for x/ç; Old-English.lsc maps ç x to h anyway.
+# - Also missing from the source: the laxing of short i e u to ɪ ɛ ʊ, handled here by the
+#   notation bridge.
+
+Symbol ɑː, ɔː, ɜː, eː, oː, iː, uː, ɛː, tʃ, dʒ
+
+Class labial {p, b, f, v, m}
+Class nasal {m, n, ŋ}
+
+emode-to-me:
+    # E12 + Great Vowel Shift (team): eɪ < eː < ME ɑː (or ME ej); oʊ < oː < ME ɔː (or ɔːw, ow)
+    e² ɪ => e j
+    e ɪ => ɑː *
+    o² ʊ => ɔː w
+    o³ ʊ => o w
+    o ʊ => ɔː *
+    # Lost gh (team): aɪ before t < ME ih
+    a² ɪ => i h / _ t
+    # E11 + Great Vowel Shift (team): aɪ aʊ < əɪ əʊ < ME iː uː
+    a ɪ => iː *
+    a ʊ => uː *
+    # Great Vowel Shift (team): iː < eː or ɛː; uː < oː; before r, eː < ɑː or ɛː, oː < ɔː or oː
+    iː² => ɛː
+    iː => eː
+    uː => oː
+    eː² => ɛː / _ ɹ
+    eː => ɑː / _ ɹ
+    oː² => oː / _ ɹ
+    oː => ɔː / _ ɹ
+    # Shortened oː after the Shift (team): foot, blood
+    ʊ² => oː
+    {ʌ², ɤ²} => oː
+    # E5, E6: ɑː < ɑʊ before labials and nasals
+    ɑː² => ɑ w / _ @labial
+    ɑː² => ɑ w / _ @nasal
+    # E4, E8: ɑː < a before r, and in "father" words
+    ɑː => ɑ
+    # Lost gh (team): ɔː before t < ME ow
+    ɔː² => o w / _ t
+    # E7: ɔː < ɑʊ elsewhere; E4: ɔː < ɑ before r
+    ɔː² => ɑ / _ ɹ
+    ɔː² => ɑ w
+    # E4: ɜː < ɛ ɪ ʊ before r
+    ɜː² => i
+    ɜː³ => u
+    ɜː => e
+    # E3: yod coalescence
+    tʃ² => t j
+    ʃ² => s j
+    dʒ² => d j
+    ʒ => z j
+    # E2: final mb ŋɡ > m ŋ
+    m² => m b / _ $
+    ŋ² => ŋ ɡ / _ $
+    # E9: TRAP æ < a; E1: STRUT ʌ ɤ < ʊ; notation bridge
+    æ => ɑ
+    {ʌ, ɤ} => u
+    {ɪ, ɛ, ʊ, a, ɹ} => {i, e, u, ɑ, r}

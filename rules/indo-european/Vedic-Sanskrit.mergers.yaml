@@ -1,0 +1,19 @@
+# Mergers reversed in Vedic-Sanskrit.lsc. DRAFT by Claude, awaiting team review.
+- sound: h
+  final: true
+  sources: [s, ʂ]                     # V1
+- sound: ɾ
+  final: true
+  sources: [r, l, s, ʂ]               # V3, V2
+- sound: ɾ
+  sources: [r, l]                     # V3
+- sound: r̩
+  sources: [r̩, l̩]                     # V3
+- sound: k
+  before: [ʂ]
+  sources: [k, ɕ, ʂ, p, c, ɟʐʱ, ɡʐʱ]  # V5-V7, V10
+- sound: t͡ɕʰ
+  sources: [cʰ, sɕ]                   # V5-V8
+- sound: p
+  before: [s]
+  sources: [p, bzʱ]                   # V9

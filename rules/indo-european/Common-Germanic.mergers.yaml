@@ -1,0 +1,30 @@
+# Mergers reversed in Common-Germanic.lsc. DRAFT by Claude, awaiting team review.
+# Each occurrence of `sound` branches into one candidate per source.
+# Tag ¹ = first source, ² = second, ... A branch whose rule condition fails
+# falls back to the plain sound and collapses into the tag-¹ candidate.
+- sound: a
+  sources: [a, o, h₂e, h₃e, H]  # R10 o > a; initial h₂e h₃e > a (team); C_H_C > a (team)
+- sound: i
+  sources: [i, e, h₁e]          # R8 e > i; initial h₁e > e > i (team)
+- sound: iː
+  sources: [iː, ei, iH]         # R11 ei > iː; iH > iː (team)
+- sound: uː
+  sources: [uː, uH]             # uH > uː (team)
+- sound: u
+  sources: [u, syllabic]        # r̥ l̥ m̥ n̥ > ur ul um un (team)
+- sound: oː
+  sources: [oː, aː, eh₂, eh₃, oH]  # R7 aː > oː; eh₂ eh₃ oH > ō (team)
+- sound: æː
+  sources: [eː, eh₁]            # R9 eː > æː; eh₁ > ē (team)
+- sound: β
+  sources: [bʱ, p]              # R1 bʱ > β; R3+R4 p > f > β (Verner)
+- sound: ð
+  sources: [dʱ, t]              # R1 dʱ > ð; R3+R4 t > θ > ð (Verner)
+- sound: ɣ
+  sources: [ɡʱ, k, ǵʱ, ḱ]       # R1 ɡʱ > ɣ; Verner k > ɣ; palatal ǵʱ > ɣ; Verner ḱ > ɣ (team)
+- sound: x
+  sources: [k, ḱ]               # R3 k > x; palatal ḱ > x (team)
+- sound: k
+  sources: [ɡ, ǵ]               # R2 ɡ > k; palatal ǵ > k (after s: k, ḱ unshifted) (team)
+- sound: ɣʷ
+  sources: [ɡʷʱ, kʷ]            # ɡʷʱ > ɣʷ; Verner kʷ > ɣʷ (team)

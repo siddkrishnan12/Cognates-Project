@@ -1,0 +1,58 @@
+# REVERSED: West Germanic -> Common Germanic
+# Source: Index Diachronica 17.7.2 "Common Germanic to West Germanic", contributed by Siride.
+#   https://chridd.nfshost.com/diachronica/all#West-Germanic
+# License: CC BY-NC-SA 3.0 (this derived file carries the same license; noncommercial use only).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Forward rules in the source, in its order:
+#   W1  β ð ɣ → b d ɡ / {#,”V}_        (”V = stressed vowel)
+#   W2  z → {r,∅}
+#   W3  C → Cː / _j ! C = r            [West Germanic gemination]
+#   W4  i u → e o / _%{a,o}            [a-mutation]
+#   W5  oː → uː / _#
+#
+# REVIEW NOTES
+# - The source's Common Germanic (17.7) has no short e, no short o and no b d ɡ:
+#   its rules turn every e into i, every o into a, and b d ɡ into p t k. So W1 and W4
+#   reverse without branching: every West Germanic b d ɡ e o maps back unconditionally.
+#   This also ignores W1's position condition, which the input can't check anyway
+#   (cleaned IPA carries no stress marks).
+# - W2 has two outcomes. z > r reverses as a merger (r branches to z). z > ∅ is the
+#   loss of final -z (*dagaz > *dag); it reverses as an optional added ending (see the
+#   mergers file), so every word also gets a candidate ending in z.
+# - W3 reverses only for geminates written with ː (pː) or doubled (pp) directly before j.
+#   A Common Germanic geminate before j would also come out single; such cases are rare.
+# - W5 applies only word-finally, so only a final uː branches.
+# - Added by team request (not in the source): Common Germanic ē (written æː, the
+#   "ē¹") became West Germanic ā (*jǣr > *jār "year"). The source's Common Germanic
+#   has no aː (its R7 turns every aː into oː), so West Germanic aː reverses to æː
+#   without branching.
+
+Symbol uː, oː, aː, æː, pː, tː, kː, bː, dː, ɡː, fː, θː, sː, xː, mː, nː, lː
+
+Class cons {p, t, k, b, d, ɡ, f, θ, s, x, h, m, n, l, w, j, β, ð, ɣ, z}
+
+# W5: final oː > uː
+final-long-o:
+    uː² => oː / _ $
+
+# W4: a-mutation i u > e o (unconditioned reversal; see review notes)
+a-mutation:
+    {e, o} => {i, u}
+
+# W3: gemination before j
+degemination:
+    {pː, tː, kː, bː, dː, ɡː, fː, θː, sː, xː, mː, nː, lː} => {p, t, k, b, d, ɡ, f, θ, s, x, m, n, l} / _ j
+    @cons$1 => * / _ $1 j
+
+# W2: rhotacism z > r (final z loss reverses through the optional ending)
+rhotacism:
+    r² => z
+
+# W1: β ð ɣ > b d ɡ (unconditioned reversal; see review notes)
+fricatives:
+    {b, d, ɡ} => {β, ð, ɣ}
+
+# Team addition: ē¹ > ā (*jǣr > *jār)
+long-e-to-long-a:
+    aː => æː

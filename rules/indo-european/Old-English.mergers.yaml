@@ -1,0 +1,14 @@
+# Mergers reversed in Old-English.lsc. DRAFT by Claude, awaiting team review.
+# Nasal branches apply only before a fricative (see the rules).
+- sound: oː
+  sources: [oː, ãː, õː]    # O1+O2 ɑ̃ː > õː > oː; õː > oː
+- sound: iː
+  sources: [iː, ĩː]        # O2
+- sound: uː
+  sources: [uː, ũː]        # O2
+- sound: eː
+  sources: [eː, ẽː, oː]    # O2; i-umlaut oː > eː (team)
+- sound: e
+  sources: [e, a, o]       # i-umlaut a > e, o > e (team)
+- sound: æː
+  sources: [æː, aː]        # i-umlaut aː > æː (team)

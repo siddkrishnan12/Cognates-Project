@@ -1,0 +1,94 @@
+# REVERSED: Proto-Indo-Aryan -> Proto-Indo-Iranian
+# Source: Index Diachronica 17.10.1 "Proto-Indo-Iranian to Proto-Indo-Aryan", contributed by
+#   Tropylium, citing Kobayashi, Masato (2004), Historical Phonology of Old Indo-Aryan Consonants.
+#   https://chridd.nfshost.com/diachronica/all#Proto-Indo-Aryan
+# License: CC BY-NC-SA 3.0 (this derived file carries the same license; noncommercial use only).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Forward rules in the source, in its order:
+#   P1  ə → i
+#   P2  Sh2 → S[+ aspirated]
+#   P3  h2 → *H
+#   P4  VH → Vː / _{C,#}
+#   P5  R̊H → {u,i}R / _V (sporadic)
+#   P6  R̊H → {u,i}ːR / _C
+#   P7  ʃ ʒ → ʂ ʐ
+#   P8  n → ɳ / R(V)_
+#   P9  t d(ʱ) n → ʈ ɖ(ʱ) ɳ / C̣_ ! _r
+#   P10 s t d(ʱ) n → ʂ ʈ ɖ(ʱ) ɳ / _C̣
+#   P11 ls lt ld(ʱ) ln → ʂ ʈ ɖ(ʱ) ɳ / "disputed"
+#   P12 s → ʂ / _V{ʂ,ʈ,ɖ(ʱ)}
+#   P13 ∅ → a / #_z
+#   P14 uʐ aʐ iʐ → uː əː iː
+#   P15 əː → oː / w_
+#   P16 əː → eː
+#   P17 tʃ dʒ(ʱ) → tɕ dʑ(ʱ) → ɕ ɟ(ʱ)
+#   P18 tst dzdʱ → tː dʱː
+#   P19 k → ∅ / #_t
+#   P20 p → ∅ / #_st
+#   P21 ɟʱ → ɦ
+#   P22 dʱ → ɦ / (unclear environment)
+#   P23 bʱ → ɦ (very rare)
+#   P24 Vm → Ṽ / _(#){s,ɕ}
+#   P25 n → ɲ / ɟ_
+#
+# HOW THIS FILE WORKS
+# One simultaneous block: each Proto-Indo-Aryan sound maps straight to its Proto-Indo-Iranian
+# source. Tagged sub-rules come first; first match wins.
+#
+# REVIEW NOTES
+# - Added by team request (not in the source): monophthongization of PIIr *ai *au to e o
+#   (devá < *daywás). Vedic eː oː reverse to ai au by default; the source's aʐ (P14, P16)
+#   and waʐ (P15) are extra branches.
+# - P2: every voiceless aspirate reverses to stop + h₂. P3 (h₂ > H) is not reversed
+#   separately: H and h₂ map to the same IPA in Step 6.
+# - P4: long vowels branch to vowel + H. P5/P6: i iː u uː before r also branch to r̩H.
+# - P7-P12: retroflexes reverse unconditionally to dentals (PIIr had none); ʂ branches to
+#   ʃ (RUKI) or s (assimilation next to a retroflex). P11 ("disputed") is not reversed.
+# - P13 (prothetic a before z) and P24 (only if Wiktionary writes nasal vowels) are rare.
+# - P17 + P21-P23: ɕ < tʃ; ɟ < ɟ or dʒ; ɦ < dʒʱ, ɟʱ, dʱ or bʱ.
+# - P18-P20: tt branches to tst; word-initial t to kt; word-initial st to pst.
+
+Symbol aː, iː, uː, eː, oː, pʰ, tʰ, kʰ, cʰ, ʈʰ, ɖʱ, dʱ, bʱ, ɡʱ, ɟʱ, ʐʱ, ʒʱ, tʃ, dʒ, dʒʱ, h₂, r̩, l̩
+
+pia-to-piir:
+    # P14-P16 + team monophthongization: eː oː < ai au (default), aʐ, waʐ
+    eː² => a ʐ
+    eː => a i
+    oː² => a ʐ / w _
+    oː => a u
+    # P5, P6: ir iːr ur uːr < r̩H
+    i³ r => r̩ H
+    u² r => r̩ H
+    iː³ r => r̩ H
+    uː³ r => r̩ H
+    # P14: iː uː < iʐ uʐ; P4: long vowels < V + H
+    iː³ => i ʐ
+    uː³ => u ʐ
+    iː² => i H
+    uː² => u H
+    aː² => a H
+    # P1: i < ə
+    i² => ə
+    # P2: voiceless aspirates < stop + h₂
+    {pʰ, tʰ, kʰ, cʰ, ʈʰ} => {p h₂, t h₂, k h₂, c h₂, t h₂}
+    # P7-P12: retroflexion
+    ʂ² => s
+    ʂ => ʃ
+    ʐʱ => ʒʱ
+    ʐ => ʒ
+    {ʈ, ɖ, ɖʱ, ɳ} => {t, d, dʱ, n}
+    # P17, P21-P23: palatals and h
+    ɕ => tʃ
+    ɟ² => dʒ
+    ɦ² => ɟʱ
+    ɦ³ => dʱ
+    ɦ⁴ => bʱ
+    ɦ => dʒʱ
+    # P18-P20: clusters
+    t² => k t / $ _
+    t² => t s / _ t
+    s² => p s / $ _ t
+    # P24, P25
+    {ã, ĩ, ũ} => {a m, i m, u m} / _ {s, ɕ}
+    ɲ => n / ɟ _

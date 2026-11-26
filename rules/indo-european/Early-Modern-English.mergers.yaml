@@ -1,0 +1,47 @@
+# Mergers reversed in Early-Modern-English.lsc. DRAFT by Claude, awaiting team review.
+- sound: ɑː
+  before: [p, b, f, v, m, n, ŋ]
+  sources: [a, ɑʊ]          # E4/E8; E5, E6
+- sound: ɔː
+  before: [t]
+  sources: [ɔː, ow]         # lost gh (team)
+- sound: ɔː
+  before: [ɹ]
+  sources: [ɔː, ɑ]          # E4
+- sound: ɔː
+  sources: [ɔː, ɑʊ]         # E7
+- sound: ɜː
+  sources: [ɛ, ɪ, ʊ]        # E4
+- sound: tʃ
+  sources: [tʃ, tj]         # E3
+- sound: ʃ
+  sources: [ʃ, sj]          # E3
+- sound: dʒ
+  sources: [dʒ, dj]         # E3
+- sound: m
+  final: true
+  sources: [m, mb]          # E2
+- sound: ŋ
+  final: true
+  sources: [ŋ, ŋɡ]          # E2
+- sound: e
+  before: [ɪ]
+  sources: [ɑː, ej]         # Great Vowel Shift + E12 (team)
+- sound: o
+  before: [ʊ]
+  sources: [ɔː, ɔːw, ow]    # Great Vowel Shift + E12 (team)
+- sound: iː
+  sources: [eː, ɛː]         # Great Vowel Shift (team)
+- sound: eː
+  before: [ɹ]
+  sources: [ɑː, ɛː]         # Great Vowel Shift (team)
+- sound: oː
+  before: [ɹ]
+  sources: [ɔː, oː]         # Great Vowel Shift (team)
+- sound: ʊ
+  sources: [u, oː]          # shortened oː after the Shift (team)
+- sound: ʌ
+  sources: [u, oː]          # shortened oː after the Shift (team)
+- sound: a
+  before: [ɪ]
+  sources: [iː, ih]         # lost gh before t (team)

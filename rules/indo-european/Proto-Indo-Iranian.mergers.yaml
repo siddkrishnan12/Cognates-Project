@@ -1,0 +1,20 @@
+# Mergers reversed in Proto-Indo-Iranian.lsc. DRAFT by Claude, awaiting team review.
+- sound: a
+  sources: [e, o, a, n̥, m̥]    # I20
+- sound: aː
+  sources: [aː, o]             # I19
+- sound: dʱ
+  after: [b, d, ɡ]
+  sources: [dʱ, t]             # I11
+- sound: c
+  sources: [k, kʷ]             # I8 + I18
+- sound: ɟ
+  sources: [ɡ, ɡʷ]             # I8 + I18
+- sound: ɟʱ
+  sources: [ɡʱ, ɡʷʱ]           # I8 + I18
+- sound: k
+  sources: [k, kʷ]             # I8
+- sound: ɡ
+  sources: [ɡ, ɡʷ]             # I8
+- sound: ɡʱ
+  sources: [ɡʱ, ɡʷʱ]           # I8

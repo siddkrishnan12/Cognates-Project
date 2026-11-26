@@ -1,0 +1,51 @@
+# Mergers reversed in Midlands-Middle-English.lsc. DRAFT by Claude, awaiting team review.
+# For each sound, the first entry whose context fits a position decides its tags.
+- sound: ə
+  sources: [e, ɑ, o]                     # M18
+- sound: w
+  after: [p, b, t, d, k, ɡ, f, v, θ, ð, s, z, ʃ, h, x, m, n, l, r]
+  sources: [w, ɣ]                        # M17
+- sound: ɡ
+  initial: true
+  sources: [ɡ, ɣ]                        # M16
+- sound: n
+  initial: true
+  sources: [n, hn]                       # M15
+- sound: l
+  initial: true
+  sources: [l, hl, wl]                   # M15
+- sound: r
+  initial: true
+  sources: [r, hr]                       # M15
+- sound: o
+  before: [w]
+  sources: [o, ɑːh, oh, oːh]             # M10 (only before t)
+- sound: ɔː
+  before: [w]
+  sources: [ɑː, ɑːɣ, oːw, oɣ]            # M8, M9
+- sound: e
+  before: [w]
+  sources: [e, eːɑ]                      # M7
+- sound: e
+  before: [j]
+  sources: [e, æ, æː, eː]                # M3, M4
+- sound: e
+  sources: [e, eo]                       # M2
+- sound: j
+  before: [u]
+  sources: [j, iː]                       # M7
+- sound: ɑ
+  before: [w]
+  sources: [ɑ, ɑɣ, eɑh, eɑʝ, eɑɣ]        # M5, M6
+- sound: ɑ
+  sources: [ɑ, eɑ]                       # M2
+- sound: ɛː
+  sources: [e, eːɑ]                      # M12, M2
+- sound: oː
+  sources: [oː, o]                       # M12
+- sound: i
+  sources: [i, y]                        # M11
+- sound: iː
+  sources: [iː, yː]                      # M11
+- sound: eː
+  sources: [eː, eːo]                     # M2

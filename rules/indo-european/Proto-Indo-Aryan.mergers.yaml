@@ -1,0 +1,42 @@
+# Mergers reversed in Proto-Indo-Aryan.lsc. DRAFT by Claude, awaiting team review.
+- sound: eː
+  sources: [ai, aʐ]          # team monophthongization; P14+P16
+- sound: oː
+  after: [w]
+  sources: [au, waʐ]         # team monophthongization; P14+P15
+- sound: i
+  before: [r]
+  sources: [i, ə, r̩H]        # P1; P5
+- sound: i
+  sources: [i, ə]            # P1
+- sound: u
+  before: [r]
+  sources: [u, r̩H]           # P5
+- sound: iː
+  before: [r]
+  sources: [iː, iH, r̩H]      # P4; P6
+- sound: iː
+  sources: [iː, iH, iʐ]      # P4; P14
+- sound: uː
+  before: [r]
+  sources: [uː, uH, r̩H]      # P4; P6
+- sound: uː
+  sources: [uː, uH, uʐ]      # P4; P14
+- sound: aː
+  sources: [aː, aH]          # P4
+- sound: ʂ
+  sources: [ʃ, s]            # P7; P10, P12
+- sound: ɟ
+  sources: [ɟ, dʒ]           # P17
+- sound: ɦ
+  sources: [dʒʱ, ɟʱ, dʱ, bʱ] # P17+P21, P21, P22, P23
+- sound: t
+  initial: true
+  sources: [t, kt]           # P19
+- sound: t
+  before: [t]
+  sources: [t, ts]           # P18
+- sound: s
+  initial: true
+  before: [t]
+  sources: [s, ps]           # P20

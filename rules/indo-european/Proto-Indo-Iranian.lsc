@@ -1,0 +1,74 @@
+# REVERSED: Proto-Indo-Iranian -> Proto-Indo-European
+# Source: Index Diachronica 17.10 "Proto-Indo-European to Proto-Indo-Iranian", contributed by
+#   Tropylium, citing Kobayashi, Masato (2004), Historical Phonology of Old Indo-Aryan Consonants.
+#   https://chridd.nfshost.com/diachronica/all#Proto-Indo-Iranian
+# License: CC BY-NC-SA 3.0 (this derived file carries the same license; noncommercial use only).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Forward rules in the source, in its order:
+#   I1  e → a / _{h2,h3}
+#   I2  e → a / {h2,h3}_
+#   I3  p → b / _h3
+#   I4  H → ə / "syllabic"
+#   I5  ə → ∅ / #_
+#   I6  {h1,h3} → *H
+#   I7  *H → ∅ / S_
+#   I8  Kʷ → K
+#   I9  s → ʃ / {u,i,l,r,K,Ḱ}_          [RUKI]
+#   I10 Ḱ → TŠ                          [satem]
+#   I11 Bʱ1P2 → B1Bʱ2                   [Bartholomae's law]
+#   I12 BʱBʱ → BBʱ
+#   I13 ptʃ → pʃ
+#   I14 ttʃ ddʒʱ → t.ʃ d.ʒʱ
+#   I15 t → ∅ / _ʃt
+#   I16 d → ∅ / _ʒdʱ
+#   I17 tʃʃ → ʃː
+#   I18 k ɡ ɡʱ → c ɟ ɟʱ / _e,i,j        [law of palatals]
+#   I19 o → aː / _CV                    [Brugmann's law]
+#   I20 {e,o,o2,N̊} → a
+#
+# HOW THIS FILE WORKS
+# One simultaneous block: each Proto-Indo-Iranian sound maps straight to its PIE source.
+#
+# REVIEW NOTES
+# - I20: every a branches to e, o, a, n̥, m̥ (default e). I1/I2 (coloring by h₂ h₃) end in the
+#   same a, so they need no separate reversal. I19: aː also branches to o.
+# - I8 + I18: k ɡ ɡʱ branch to their labiovelars; c ɟ ɟʱ reverse to k ɡ ɡʱ or kʷ ɡʷ ɡʷʱ.
+# - I9: every ʃ reverses to s; I10: tʃ dʒ dʒʱ reverse to ḱ ǵ ǵʱ.
+# - I11: dʱ after a voiced stop branches to Bartholomae's t (b dʱ < bʱ t).
+# - Not reversed: I3 (rare), I5 and I7 (lost laryngeals: restoring them would add an
+#   optional H at many positions), I12-I17 (rare clusters).
+# - I4: ə reverses to H, written H as in the Germanic chain.
+
+Symbol aː, eː, oː, iː, uː, bʱ, dʱ, ɡʱ, ɟʱ, ǵʱ, kʷ, ɡʷ, ɡʷʱ, tʃ, dʒ, dʒʱ, ʒʱ, r̩, l̩, m̩, n̩
+
+piir-to-pie:
+    # I20, I19
+    a² => o
+    a³ => a
+    a⁴ => n̩
+    a⁵ => m̩
+    a => e
+    aː² => o
+    # I4
+    ə => H
+    # I11: Bartholomae
+    b dʱ² => bʱ t
+    d dʱ² => dʱ t
+    ɡ dʱ² => ɡʱ t
+    # I10: satem
+    {tʃ, dʒ, dʒʱ} => {ḱ, ǵ, ǵʱ}
+    # I9: RUKI
+    ʃ => s
+    ʒʱ => zʱ
+    ʒ => z
+    # I8 + I18: palatals and labiovelars
+    c² => kʷ
+    c => k
+    ɟʱ² => ɡʷʱ
+    ɟʱ => ɡʱ
+    ɟ² => ɡʷ
+    ɟ => ɡ
+    k² => kʷ
+    ɡʱ² => ɡʷʱ
+    ɡ² => ɡʷ

@@ -1,0 +1,22 @@
+# Mergers reversed in Anglo-Frisian.lsc. DRAFT by Claude, awaiting team review.
+# Tag ¹ = first source, ² = second, ...
+- sound: j
+  sources: [j, ɡ, i]       # A4 ɡ > j; A12 ia iu > jaː juː
+- sound: eː
+  sources: [eː, aː, ai]    # A6 (via æː); A10 ai > eː
+- sound: aː
+  sources: [aː, ai, au]    # A5; A10 ai > aː, au > aː
+- sound: a
+  sources: [a, o]          # A9 unstressed o > a
+- sound: e
+  sources: [e, i]          # A9 unstressed i > e
+- sound: ãː
+  sources: [an, am]        # A2 nasal spirant law
+- sound: ẽː
+  sources: [en, em]
+- sound: ĩː
+  sources: [in, im]
+- sound: õː
+  sources: [on, om]
+- sound: ũː
+  sources: [un, um]

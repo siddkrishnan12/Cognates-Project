@@ -1,0 +1,125 @@
+# REVERSED: Common Germanic -> Proto-Indo-European
+# Source: Index Diachronica 17.7 "Proto-Indo-European to Common Germanic", contributed by Siride.
+#   https://chridd.nfshost.com/diachronica/all#Common-Germanic
+# License: CC BY-NC-SA 3.0 (this derived file carries the same license; noncommercial use only).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Reversed rules run newest forward change first. Merged sounds carry per-position
+# tags (see Common-Germanic.mergers.yaml): tag 1 is always the "unchanged" source.
+#
+# Forward rules in the source, in its order:
+#   R1  bʱ dʱ ɡʱ → β ð ɣ
+#   R2  b d ɡ → p t k
+#   R3  p t k → f θ x
+#   R4  f θ s x → β ð z ɣ  "(Except initially or following IE stress)"   [Verner]
+#   R5  {i,j} {u,w} → j w / V[+short]C_
+#   R6  {i,j} {u,w} → ij uw
+#   R7  aː → oː
+#   R8  e → i
+#   R9  eː → æː
+#   R10 o → a
+#   R11 ei oi → iː ai
+#   R12 eːi {oːi,aːi} → eː oː (?)
+#   R13 eu ou → iu au
+#
+# REVIEW NOTES
+# - R12 is marked (?) in the source and is not reversed here.
+# - R8 is unconditioned in the source, but Germanic e > i happened only before i, j
+#   or a nasal + consonant. Reversing it unconditioned makes every i branch to e.
+# - Added by team request (not in the source): syllabic resonants and laryngeals.
+#   Syllabic resonants: r̥ l̥ m̥ n̥ > ur ul um un, so u before r l m n branches to r̩ l̩ m̩ n̩.
+#   Laryngeal coloring: word-initial h₂e h₃e > a o (> Germanic a); h₁e > e (> i by R8).
+#     Restricted to word-initial position here; medial coloring is not reversed.
+#   Laryngeal lengthening: eh₁ > ē (> æː); eh₂ eh₃ oH > ō; iH uH > ī ū.
+#   Vocalization: H between consonants > a (*ph₂tḗr > *fadēr).
+#   Not reversed: laryngeal loss before a consonant at word start (*h₂stḗr > *sternô),
+#   loss between consonants in later syllables, and long syllabic resonants (r̥H).
+#   H marks a laryngeal of unknown quality.
+# - Added by team request (not in the source): palatovelars and labiovelars.
+#   Palatovelars merged with plain velars (centum), then shifted with them:
+#     ḱ ǵ ǵʱ > x k ɣ, and ḱ > ɣ by Verner. So every Germanic x k ɣ branches to a palatal.
+#   Labiovelars stayed distinct and shifted as a series:
+#     kʷ ɡʷ ɡʷʱ > xʷ kʷ ɣʷ, and kʷ > ɣʷ by Verner.
+#   Not reversed: delabialization next to u (*gʷʰ > *g before u) and the irregular
+#   reflexes of *ɡʷʱ (b, w), so Germanic g b w never branch to a labiovelar.
+# - R2 and R3 form a chain shift (Grimm's law). Applied in sequence they would turn
+#   b into f, so the reversal undoes R1-R4 in one simultaneous rule.
+# - R4's stress condition is lost; only word-initial position blocks the Verner branch.
+# - Added by team request (not in the source): Grimm's law did not shift p t k after s,
+#   so Germanic sp st sk continue PIE sp st sk unchanged.
+# - Added by team request (not in the source): a stop after another stop did not shift
+#   either. PIE kt pt became Germanic xt ft (*oḱtṓ > *ahtōu), so t after f or x stays t.
+
+Symbol iː, eː, æː, oː, aː, uː, bʱ, dʱ, ɡʱ, ǵʱ, kʷ, ɡʷ, ɡʷʱ, xʷ, ɣʷ, h₁, h₂, h₃, r̩, l̩, m̩, n̩
+
+Class vowel {a, e, i, o, u, aː, eː, iː, oː, uː, æː}
+
+# R13: eu > iu (ou > au is covered by the a merger, R10)
+diphthongs-eu:
+    i => e / _ u
+
+# R11: ei > iː (oi > ai is covered by the a merger, R10)
+ei-from-long-i:
+    iː² => e i
+
+# R10: o > a
+o-from-a:
+    a² => o
+
+# R9: eː > æː
+long-e:
+    æː => eː
+
+# R8: e > i (unconditioned in the source; see review notes)
+e-from-i:
+    i² => e
+
+# R7: aː > oː
+long-a:
+    oː² => aː
+
+# R6, R5: syllabic high vowels before their glide copies
+glide-copies:
+    i j => i *
+    u w => u *
+
+# R4, R3, R2, R1 together. Sub-rules apply simultaneously, first match wins.
+# Verner branches (β² ð² ɣ² ɣ⁴ ɣʷ²): came from voiceless stops via fricatives, except word-initially.
+# Palatal branches (x² k² ɣ³ ɣ⁴): came from palatovelars.
+# s-exception: p t k kʷ after s were never shifted, so they stay voiceless.
+# Stop-cluster exception: t after f or x (from PIE pt kt) was never shifted, so it stays t.
+grimm-verner:
+    β² => p // $ _
+    ð² => t // $ _
+    ɣ² => k // $ _
+    ɣ⁴ => ḱ // $ _
+    ɣʷ² => kʷ // $ _
+    ɣ³ => ǵʱ
+    z => s
+    k² => ḱ / s _
+    k² => ǵ
+    x² => ḱ
+    kʷ => ɡʷ // s _
+    xʷ => kʷ
+    ɣʷ => ɡʷʱ
+    {p, t, k} => {b, d, ɡ} // {s, f, x} _
+    {f, θ, x, β, ð, ɣ} => {p, t, k, bʱ, dʱ, ɡʱ}
+
+# Syllabic resonants (team addition): ur ul um un < r̥ l̥ m̥ n̥
+syllabic-resonants:
+    u² {r, l, m, n} => * {r̩, l̩, m̩, n̩}
+
+# Laryngeals (team addition), oldest changes, so reversed last.
+laryngeal-lengthening:
+    eː² => e h₁
+    oː³ => e h₂
+    oː⁴ => e h₃
+    oː⁵ => o H
+    iː³ => i H
+    uː² => u H
+laryngeal-coloring:
+    a³ => h₂ e / $ _
+    a⁴ => h₃ e / $ _
+    i³ => h₁ e / $ _
+laryngeal-vocalization:
+    a⁵ => H / !@vowel _ !@vowel

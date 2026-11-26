@@ -1,0 +1,77 @@
+# REVERSED: Old English -> Anglo-Frisian
+# Source: Index Diachronica 17.7.2.1.1 "Anglo-Frisian to Old English", contributed by
+#   Pogostick Man, citing Wikipedia ("Phonological history of English", 2011).
+#   https://chridd.nfshost.com/diachronica/all#Old-English
+# License: CC BY-NC-SA 3.0 (this derived file carries the same license; noncommercial use only).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Forward rules in the source, in its order:
+#   O1  ɑ̃ː → õː
+#   O2  V[+nas] → V[-nas]
+#   O3  {i,u} → ∅ / _# ! V[-long]C_#
+#   O4  k ɣ ɡ → tʃ ʝ dʒ / "in certain complex circumstances"
+#
+# REVIEW NOTES
+# - O3 (loss of final i u) is not reversed (team decision: vowel endings vanish when
+#   Step 6 strips vowels, and they multiply candidates).
+# - O4 repeats Anglo-Frisian A4 for k (k > tʃ); its condition is unspecified in the source.
+#   Here tʃ ʝ dʒ reverse unconditionally to k ɣ ɡ.
+# - O1 + O2: Anglo-Frisian nasal long vowels arose only before fricatives (nasal spirant
+#   law), so only long vowels before a fricative branch back to nasal vowels. Short
+#   nasalized ɑ̃ (before nasals) needs no reversal: Anglo-Frisian.lsc maps a before a
+#   nasal to the same result.
+# - Added by team request (not in the source): i-umlaut and breaking.
+#   Breaking (earlier): æ e i > eɑ eo io, and æː eː iː > eːɑ eːo iːo, before r l h.
+#     Reverses only before r l h (x ç); the following-consonant condition for r l is not
+#     checked. Wiktionary's æɑ spelling of eɑ is accepted too.
+#   i-umlaut (later): before i j in the next syllable, u uː > y yː; a æ o > e;
+#     aː > æː; oː > œː > eː; o > œ; eɑ eːɑ > ie iːe (West Saxon). The i j trigger is
+#     usually lost, so the reversal does not check it: every y yː reverses to u uː,
+#     every e branches to a or o, every eː to oː, every æː to aː, and ie iːe to eɑ eːɑ.
+#   Order: nasal-vowel branches run before the umlaut reversal, so each merger tag is
+#     used once. A plural like gēs (umlaut of nasal-origin ō) therefore reverses to
+#     gōs but not on to gãːs; lemmas are singular, so this rarely matters.
+# - Still missing and not reversed: palatal diphthongization (ġeard) and the loss of h
+#   with compensatory lengthening (sēon < *sehwan).
+# - Notation bridge (not a sound change): this section and Middle English write ɑ ɑː for
+#   the Anglo-Frisian a aː, and ç x for allophones of h. These map back last.
+
+Symbol aː, eː, iː, oː, uː, ɑː, æː, yː, œː, tʃ, dʒ, ãː, õː, ĩː, ũː, ẽː
+
+Class fricative {f, θ, ð, s, z, h, x, ç, ɣ, ʝ, v}
+Class breaker {r, l, h, x, ç}
+
+# O4: palatalization
+palatalization:
+    {tʃ, ʝ, dʒ} => {k, ɣ, ɡ}
+
+# O2 + O1: denasalization; Anglo-Frisian ãː > OE õː > oː
+nasal-vowels:
+    oː² => ãː / _ @fricative
+    oː³ => õː / _ @fricative
+    iː² => ĩː / _ @fricative
+    uː² => ũː / _ @fricative
+    eː² => ẽː / _ @fricative
+
+# Team addition: i-umlaut (reversed before breaking, since it happened later)
+i-umlaut:
+    {y, yː, œ, œː} => {u, uː, o, oː}
+    i e => e ɑ
+    iː e => eː ɑ
+    e² => a // _ {ɑ, o}
+    e³ => o // _ {ɑ, o}
+    eː³ => oː // _ {ɑ, o}
+    æː² => aː
+
+# Team addition: breaking before r l h
+breaking:
+    {e, æ} ɑ => æ * / _ @breaker
+    {eː, æː} ɑ => æː * / _ @breaker
+    e o => e * / _ @breaker
+    i o => i * / _ @breaker
+    eː o => eː * / _ @breaker
+    iː o => iː * / _ @breaker
+
+# Notation bridge to the Anglo-Frisian section
+notation-to-anglo-frisian:
+    {ɑ, ɑː, ç, x} => {a, aː, h, h}
