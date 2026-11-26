@@ -49,10 +49,14 @@ All commands run from the project root.
 On macOS, Homebrew installs all three programs:
 
 ```bash
-brew install python@3.12             # Python 3.12, as python3.12
-brew install --cask temurin          # Java (skip if `java -version` already works)
-brew install --cask mactex-no-gui    # TeX Live with XeLaTeX (only for --tree)
+brew install python@3.12
+brew install --cask temurin
+brew install --cask mactex-no-gui
 ```
+
+- `python@3.12` provides Python 3.12 as `python3.12`.
+- `temurin` provides Java. Skip it if `java -version` already works.
+- `mactex-no-gui` provides TeX Live with XeLaTeX, needed only for `--tree`.
 
 MacTeX puts its programs in `/Library/TeX/texbin`. Open a new terminal afterward, so `xelatex` appears on your `PATH`.
 
@@ -66,10 +70,12 @@ sudo apt install python3.12 python3.12-venv default-jre \
 Check the three programs:
 
 ```bash
-python3.12 --version    # Python 3.12.x
-java -version           # version 8 or newer
-xelatex --version       # XeTeX ... (TeX Live ...)
+python3.12 --version
+java -version
+xelatex --version
 ```
+
+Expect Python 3.12.x, Java version 8 or newer, and a line starting with `XeTeX`.
 
 ### 2. Python virtual environment
 
@@ -105,9 +111,10 @@ python3.12 -m venv .venv
 Activate the environment to use plain `python`, `pip` and `cognates` in the current terminal:
 
 ```bash
-source .venv/bin/activate    # the prompt now starts with (.venv)
-deactivate                   # return to the system Python
+source .venv/bin/activate
 ```
+
+The prompt then starts with `(.venv)`. To return to the system Python, run `deactivate`.
 
 Without activation, call the programs through their full paths, e.g. `.venv/bin/cognates`.
 
@@ -165,15 +172,16 @@ mkdir -p data/diachronica
 curl -sSL -o data/diachronica/all.html https://chridd.nfshost.com/diachronica/all
 ```
 
-### 5. Build the index, tree and dataset
+### 5. Build the index and dataset
 
 ```bash
-.venv/bin/cognates index           # Wiktionary noun index -> data/wiktionary.sqlite (about 30 s)
-.venv/bin/cognates tree            # stage tree -> tree/indo-european.json
-.venv/bin/cognates build-dataset   # labeled cognate pairs -> output/cognate_pairs.csv
+.venv/bin/cognates index
+.venv/bin/cognates build-dataset
 ```
 
-`tree/indo-european.json` already ships with the project. Rebuild it only after changing `cognates/tree.py` or downloading a new Index Diachronica.
+- `index` builds the Wiktionary noun index, `data/wiktionary.sqlite`, in about 30 seconds.
+- `build-dataset` extracts the labeled cognate pairs to `output/cognate_pairs.csv`.
+- `.venv/bin/cognates tree` rebuilds the stage tree, `tree/indo-european.json`. The file ships with the project, so run this command only after changing `cognates/tree.py` or downloading a new Index Diachronica.
 
 ## Usage
 
