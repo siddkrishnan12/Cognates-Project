@@ -1,4 +1,4 @@
-"""Command line: cognates index | tree | build-dataset | test | table."""
+"""Command line: cognates index | tree | build-dataset | test | table | product."""
 from __future__ import annotations
 
 import argparse
@@ -11,7 +11,7 @@ from .errors import PipelineStop
 def _test(args) -> None:
     from .pipeline import analyze
 
-    row, d = analyze(args.noun1, args.lang1, args.noun2, args.lang2, args.forgive_missing_endings)
+    row, d = analyze(args.noun1, args.lang1, args.noun2, args.lang2)
     for n, w, trace in ((1, d["word1"], d["trace1"]), (2, d["word2"], d["trace2"])):
         print(f"noun{n}: {w.typed} -> lemma {w.lemma.word} | translation {w.translation!r} | IPA {w.ipa} ({w.ipa_source})")
         for t in trace:
@@ -36,8 +36,15 @@ def _table(args) -> None:
     from .table import skipped_path
 
     path, n, skipped = build(args.noun1, args.lang1, args.noun2, args.lang2, args.langs,
-                             forgive_endings=args.forgive_missing_endings, output=args.output)
+                             output=args.output)
     print(f"wrote {path} ({n} labeled rows + the new pair; {skipped} pairs skipped, see {skipped_path(path).name})")
+
+
+def _product(args) -> None:
+    from .table import build_product, skipped_path
+
+    path, n, skipped = build_product(args.list1, args.list2, output=args.output)
+    print(f"wrote {path} ({n} pairs; {skipped} pairs skipped, see {skipped_path(path).name})")
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -49,10 +56,6 @@ def main(argv: list[str] | None = None) -> None:
     for name, fn in (("test", _test), ("table", _table)):
         s = sub.add_parser(name)
         s.add_argument("noun1"); s.add_argument("lang1"); s.add_argument("noun2"); s.add_argument("lang2")
-        s.add_argument("--forgive-missing-endings", action="store_true",
-                       help="when one language's lemmas lack nominative endings (languages.yaml "
-                            "lemma_ending: missing, e.g. Sanskrit), drop one final consonant of the "
-                            "other word's root at no cost (off by default)")
         if name == "test":
             s.add_argument("--tree", type=Path, metavar="PATH.tex",
                            help="when the pair scores as cognate (phonetic distance at or below "
@@ -66,6 +69,14 @@ def main(argv: list[str] | None = None) -> None:
                            help="table CSV path (default output/table.csv); skipped pairs go to "
                                 "<name>_skipped.csv next to it")
         s.set_defaults(fn=fn)
+    s = sub.add_parser("product", help="score every ordered pair from two word-list files")
+    s.add_argument("list1", type=Path, help="nouns for noun1, one per line; the extension is the "
+                                            "language code (e.g. list1.en)")
+    s.add_argument("list2", type=Path, help="nouns for noun2, one per line (e.g. list2.sa)")
+    s.add_argument("--output", type=Path, metavar="PATH",
+                   help="CSV path (default output/product.csv); skipped pairs go to "
+                        "<name>_skipped.csv next to it")
+    s.set_defaults(fn=_product)
     args = p.parse_args(argv)
     try:
         if args.cmd == "index":

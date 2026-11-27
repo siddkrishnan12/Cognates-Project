@@ -6,10 +6,6 @@
 # epitran: fallback grapheme-to-IPA code, or null when epitran lacks the language.
 # epitran_native: (optional) epitran code for the native script, used when an entry has no
 #   romanization for the Latin-script code to read.
-# lemma_ending: (optional) `missing` when Wiktionary gives this language's nouns without their
-#   nominative ending (Sanskrit lemmas are stems: vṛ́ka, not vṛ́kas). With the CLI switch
-#   --forgive-missing-endings (off by default), the other word's root may drop one final
-#   consonant at no cost in Step 6 (team decision 2026-11-24).
 # prefer_tag: (optional) Step 2 takes the first phonemic IPA carrying this Wiktionary tag,
 #   falling back to the first phonemic IPA.
 en:
@@ -50,4 +46,3 @@ sa:
   stage: Vedic-Sanskrit
   processes: []
   epitran: null
-  lemma_ending: missing

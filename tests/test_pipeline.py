@@ -319,44 +319,35 @@ def test_english_gothic_cognates_beat_controls():
     assert pipeline.analyze("wolf", "en", "juk", "got")[0]["phonetic_distance"] > 5
 
 
-# Step 6 revision: free final consonant when the other language lacks endings
-def test_missing_ending_forgives_one_final_consonant():
-    full = distance.closest({"wulfs"}, {"wl̩k"})
-    forgiven = distance.closest({"wulfs"}, {"wl̩k"}, drop_final1=True)
-    assert full.distance - forgiven.distance == pytest.approx(7.25)
-    assert forgiven.shown1() == "wlf(s)" and forgiven.dropped1 == "s"
+# Step 6 metric: jt_weighted_feature_edit_distance (team decision 2026-11-27)
+def test_distance_uses_jt_metric_with_cheap_insertions():
+    # one extra final consonant costs a flat 1.8125, whatever the consonant
+    for extra in ("s", "n", "k"):
+        assert distance.closest({"wulf" + extra}, {"wulf"}).distance == pytest.approx(1.8125)
+    assert distance.closest({"taks"}, {"t"}).distance == pytest.approx(2 * 1.8125)
+    # substitutions keep their feature weights
+    assert distance.closest({"s"}, {"z"}).distance == pytest.approx(0.25)
+    assert distance.closest({"k"}, {"t"}).distance == pytest.approx(2.125)
 
 
-def test_missing_ending_forgives_only_one_consonant():
-    one = distance.closest({"tak"}, {"t"}, drop_final1=True)
-    two = distance.closest({"taks"}, {"t"}, drop_final1=True)
-    assert two.distance - one.distance == pytest.approx(7.25)
-
-
-def test_missing_ending_flag_applies_only_across_flagged_and_unflagged():
-    from cognates import pipeline
-    for a, la, b, lb in [("day", "en", "dags", "got"), ("पितृ", "sa", "मातृ", "sa")]:
-        w1, w2 = pipeline.prepare_word(a, la), pipeline.prepare_word(b, lb)
-        plan = reverse.plan(la, lb)
-        c1 = reverse.reconstruct(w1.ipa, plan.path1)[0]
-        c2 = reverse.reconstruct(w2.ipa, plan.path2)[0]
-        assert pipeline.row(w1, w2, c1, c2, forgive_endings=True)["phonetic_distance"] == distance.closest(c1, c2).distance
-    assert "(" in pipeline.analyze("wulfs", "got", "वृक", "sa", forgive_endings=True)[0]["closest_root1"]
-    assert "(" not in pipeline.analyze("wulfs", "got", "वृक", "sa")[0]["closest_root1"]   # off by default
+def test_forgive_switch_is_retired(tmp_path):
+    from cognates import cli
+    with pytest.raises(SystemExit):
+        cli.main(["test", "father", "en", "fadar", "got", "--forgive-missing-endings"])
 
 
 def test_table_output_path_and_skipped_log_location(tmp_path):
     from cognates import table
     assert table.skipped_path(table.TABLE_CSV) == table.SKIPPED_CSV
-    assert table.skipped_path(tmp_path / "forgiving.csv") == tmp_path / "forgiving_skipped.csv"
+    assert table.skipped_path(tmp_path / "other.csv") == tmp_path / "other_skipped.csv"
 
 
 def test_cli_accepts_output_option(tmp_path, monkeypatch):
     from cognates import cli, table
     seen = {}
     monkeypatch.setattr(table, "build", lambda *a, **k: (seen.update(k) or (k["output"], 0, 0)))
-    cli.main(["table", "father", "en", "fadar", "got", "--output", str(tmp_path / "x.csv"), "--forgive-missing-endings"])
-    assert seen["output"] == tmp_path / "x.csv" and seen["forgive_endings"] is True
+    cli.main(["table", "father", "en", "fadar", "got", "--output", str(tmp_path / "x.csv")])
+    assert seen["output"] == tmp_path / "x.csv"
 
 
 # LaTeX tree ---------------------------------------------------------------
@@ -392,3 +383,32 @@ def test_cli_tree_respects_threshold(tmp_path, capsys):
     assert not out.exists() and "no tree" in capsys.readouterr().out
     cli.main(["test", "father", "en", "अग्नि", "sa", "--tree", str(out), "--tree-threshold", "10"])
     assert out.exists()
+
+
+def test_read_word_list_takes_language_from_extension(tmp_path):
+    from cognates import table
+
+    f = tmp_path / "list1.en"
+    f.write_text("father\n\n  wolf \n", encoding="utf-8")
+    assert table.read_word_list(f) == ("en", ["father", "wolf"])
+    with pytest.raises(PipelineStop):
+        table.read_word_list(tmp_path / "list1")
+    bad = tmp_path / "list1.xx"
+    bad.write_text("father\n")
+    with pytest.raises(PipelineStop):
+        table.read_word_list(bad)
+
+
+def test_product_scores_every_ordered_pair_and_logs_stops(tmp_path):
+    import csv
+    from cognates import cli
+
+    (tmp_path / "a.en").write_text("father\nzzzqx\n", encoding="utf-8")
+    (tmp_path / "b.got").write_text("fadar\ndags\n", encoding="utf-8")
+    out = tmp_path / "p.csv"
+    cli.main(["product", str(tmp_path / "a.en"), str(tmp_path / "b.got"), "--output", str(out)])
+    rows = list(csv.DictReader(open(out, encoding="utf-8")))
+    assert [(r["noun1"], r["translation2"]) for r in rows] == [("father", "father"), ("father", "day")]
+    assert float(rows[0]["phonetic_distance"]) == 0.0
+    skipped = list(csv.DictReader(open(tmp_path / "p_skipped.csv", encoding="utf-8")))
+    assert [(s["word1"], s["word2"], s["step"]) for s in skipped] == [("zzzqx", "fadar", "1"), ("zzzqx", "dags", "1")]

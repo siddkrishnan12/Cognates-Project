@@ -3,7 +3,7 @@
 This tool tests whether two nouns from two Indo-European languages are related. For each pair, it computes two scores:
 
 - **Semantic similarity (Step 3):** the word2vec cosine similarity of the two nouns' English translations.
-- **Phonetic distance (Step 6):** the PanPhon weighted edit distance between the consonant skeletons of the two nouns. Before the comparison, each noun's sound changes run in reverse back to the two languages' nearest shared ancestor.
+- **Phonetic distance (Step 6):** the PanPhon weighted feature edit distance (`jt_weighted_feature_edit_distance`) between the consonant skeletons of the two nouns. Before the comparison, each noun's sound changes run in reverse back to the two languages' nearest shared ancestor.
 
 A table then lists both scores for a set of known cognates from Wiktionary, with the new pair as its last row. That lets you see where the new pair falls among established cognates.
 
@@ -15,7 +15,7 @@ A table then lists both scores for a set of known cognates from Wiktionary, with
 | 2 | Take the lemma's IPA from Wiktionary, or from the epitran library as a fallback. | `cognates/wiktionary.py`, `cognates/ipa.py` |
 | 3 | Score the two translations' head nouns with Google News word2vec. | `cognates/semantic.py` |
 | 4–5 | Run each word through its language's reversed sound changes (Lexurgy rule files), back to the nearest shared ancestor. Merged sounds branch, so each word yields a set of candidate roots. Vowels are then stripped. | `cognates/reverse.py`, `cognates/tree.py`, `rules/` |
-| 6 | Compute the smallest PanPhon distance over all pairs of candidate roots. | `cognates/distance.py` |
+| 6 | Compute the smallest PanPhon distance over all pairs of candidate roots. A substitution costs 0.25 to 4.75, depending on how many phonetic features differ, and every inserted or deleted consonant costs 1.8125. | `cognates/distance.py` |
 | 7 | Write a CSV table of labeled cognates, with the new pair last. | `cognates/dataset.py`, `cognates/table.py` |
 
 The reversed sound changes come from [Index Diachronica](https://chridd.nfshost.com/diachronica/all), item 17 ("Indo-European"), with additions by the project team. Each rule file in `rules/indo-european/` names its source and marks every team addition.
@@ -220,12 +220,22 @@ Arguments: `noun1 lang1 noun2 lang2`, with the language codes from the table abo
 
 Table columns: `noun1, language1, noun2, language2, translation1, translation2, semantic_similarity, closest_root1, closest_root2, phonetic_distance`.
 
+### Score every pair from two word lists
+
+```bash
+.venv/bin/cognates product list1.en list2.sa
+```
+
+- **Input:** two text files with one noun per line. Each file's extension names its language, using the codes from the table above: `list1.en` holds English nouns, `list2.sa` Sanskrit ones. Blank lines are ignored.
+- **Pairs:** the command forms every ordered pair (noun1 from the first file, noun2 from the second) and runs the test on each. The rows follow the first file's order, and within each noun1, the second file's order.
+- **Output:** `output/product.csv`, with the same columns as the comparison table. Pairs that stop at any step go to `output/product_skipped.csv`, with the step and reason.
+- **Speed:** each noun is looked up and reversed once, however many pairs it appears in. Three English and three Sanskrit nouns take about 10 seconds.
+
 ### Options
 
 | Option | Commands | Effect |
 |---|---|---|
-| `--forgive-missing-endings` | `test`, `table` | Wiktionary gives Sanskrit nouns as bare stems, without their nominative ending. With this switch, when one word's language is marked `lemma_ending: missing` in `languages.yaml`, the other word's root may drop one final consonant at no cost. A forgiven consonant appears in parentheses, e.g. `wlf(s)`. Off by default. |
-| `--output PATH` | `table` | Write the table to `PATH`. Skipped pairs go to `<name>_skipped.csv` beside it. |
+| `--output PATH` | `table`, `product` | Write the table to `PATH`. Skipped pairs go to `<name>_skipped.csv` beside it. |
 
 ### Draw a tree for a cognate pair
 
@@ -247,19 +257,9 @@ A pair counts as cognate when its phonetic distance is at or below the threshold
 
 Compiling needs XeLaTeX with the `forest` and `fontspec` packages, plus three fonts: Charis SIL (part of TeX Live) for IPA, and Devanagari MT and Noto Sans Gothic (both part of macOS) for Devanagari and Gothic script. On Linux, name another installed Devanagari font in the preamble of `cognates/latex_tree.py`. Without XeLaTeX, the `.tex` file is still written. The tree shows one derivation per word; where several earlier forms lead to the same later form, it takes the first in sorted order.
 
-### Keep both scoring modes side by side
-
-`--output` keeps a second table from overwriting the default one:
-
-```bash
-.venv/bin/cognates table father en fadar got --langs en got sa
-.venv/bin/cognates table father en fadar got --langs en got sa \
-    --forgive-missing-endings --output output/table_forgiving.csv
-```
-
 ## Configuration
 
-- **`languages.yaml`** lists the supported languages. Each entry names its Wiktionary file, its stage in the tree, its epitran fallback and optional settings (`prefer_tag`, `epitran_native`, `lemma_ending`). The file's header comment explains each key.
+- **`languages.yaml`** lists the supported languages. Each entry names its Wiktionary file, its stage in the tree, its epitran fallback and optional settings (`prefer_tag`, `epitran_native`). The file's header comment explains each key.
 - **`rules/indo-european/<Stage>.lsc`** holds one stage's reversed sound changes in Lexurgy syntax. The matching `<Stage>.mergers.yaml` lists the sounds that branch to several ancestral sources.
 - **`rules/symbols.yaml`** maps reconstruction symbols (h₂, ḱ, bʱ, …) to IPA that PanPhon can read in Step 6.
 

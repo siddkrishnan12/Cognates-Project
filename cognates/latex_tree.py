@@ -87,7 +87,7 @@ def tree_tex(row: dict, details: dict) -> str:
     """The full LaTeX document for one analyzed pair (pipeline.analyze output)."""
     best = details["closest"]
     ancestor = details["ancestor"]
-    r1, r2 = best.shown1(), best.shown2()
+    r1, r2 = best.root1, best.root2
     skeleton = "*" + tex_text(r1) if r1 == r2 else "*" + tex_text(r1) + " ~ *" + tex_text(r2)
     root = _node(skeleton, r"\textsc{" + tex_text(ancestor) + "}",
                  r"{\footnotesize phonetic distance " + f"{row['phonetic_distance']:g}" +
