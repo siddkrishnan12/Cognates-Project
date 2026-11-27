@@ -1,0 +1,36 @@
+# Mergers reversed in Classical-Persian.lsc. DRAFT by Claude, awaiting team review.
+# Citations as in the .lsc file; § ? / p. ? for the team to fill in.
+- sound: a
+  final: true
+  sources: [a, aɡ]        # P1 [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?; Skjærvø 2009, p. ?]
+- sound: iː
+  final: true
+  sources: [iː, iːɡ]      # P1, same sources
+- sound: uː
+  final: true
+  sources: [uː, uːɡ]      # P1, same sources
+- sound: b
+  initial: true
+  sources: [b, w]         # P2 [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+- sound: ɡ
+  initial: true
+  before: [u]
+  sources: [ɡ, w]         # P3 [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+- sound: aː
+  final: true
+  sources: [aː, aːj, aːɡ]   # P5 [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+- sound: ʃ
+  final: true
+  sources: [ʃ, ʃn, xʃ]      # P6 + P7 [Hübschmann 1895, Lautlehre § ?; Skjærvø 2009, p. ?; Horn 1893, p. ?]
+- sound: ʃ
+  after: [a, i, u, aː, eː, iː, oː, uː]
+  sources: [ʃ, xʃ]          # P7 [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+- sound: w
+  after: [a, i, u, aː, eː, iː, oː, uː]
+  sources: [w, b]           # P8 [Hübschmann 1895, Lautlehre § ?; Skjærvø 2009, p. ?]
+- sound: a
+  initial: true
+  sources: [a, ha]          # P9 [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+- sound: f
+  before: [r, s]
+  sources: [f, b]           # P10 [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]

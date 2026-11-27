@@ -1,0 +1,11 @@
+# Mergers reversed in Old-Persian.lsc. DRAFT by Claude, awaiting team review.
+# Citations as in the .lsc file; § ? / p. ? for the team to fill in.
+- sound: s
+  before: [p]
+  sources: [s, t͡s]         # R4 [Skjærvø 2009, p. ?; Kent 1953, § ?]
+- sound: θ
+  sources: [θ, t͡s]         # R1 [Skjærvø 2009, p. ?; Kent 1953, § ?]
+- sound: d
+  sources: [d, d͡z]         # R2 [Skjærvø 2009, p. ?; Kent 1953, § ?]
+- sound: z
+  sources: [z, d͡z]         # R2 [Skjærvø 2009, p. ?; Kent 1953, § ?]

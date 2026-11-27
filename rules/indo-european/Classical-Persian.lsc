@@ -1,0 +1,89 @@
+# REVERSED: Classical Persian -> Middle Persian
+# Source: team addition (tree/additions.yaml); no Index Diachronica section exists.
+#   Drafted by Claude from:
+#   [Hübschmann 1895] Hübschmann, H. (1895), Persische Studien, Strassburg: Trübner,
+#     part II, "Neupersische Lautlehre".
+#   [Horn 1893] Horn, P. (1893), Grundriss der neupersischen Etymologie, Strassburg: Trübner.
+#   [Skjærvø 2009] Skjærvø, P. O. (2009), "Middle West Iranian", in Windfuhr, G. (ed.),
+#     The Iranian Languages, London: Routledge, section on phonology.
+#   [MacKenzie 1971] MacKenzie, D. N. (1971), A Concise Pahlavi Dictionary, London: OUP,
+#     introduction (transcription); the Middle Persian forms below follow its transcription.
+#   Each rule carries its own citation (team decision 2026-11-27). Section and page numbers
+#   the drafter could not confirm are written "§ ?" / "p. ?" for the team to fill in.
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Input: Classical Persian as produced by Modern-Iranian-Persian.lsc (padar, ustuxʷaːn).
+# Output: Middle Persian in IPA, following MacKenzie's transcription (pidar, astuxʷān).
+#
+# Forward changes, Middle Persian > Classical (Early New) Persian:
+#   P1  final -ag -īg -ūg > -a -ī -ū: final g lost after a vowel
+#       (afsānag > afsāna 'fable', brūg > abrū 'eyebrow')
+#       [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?; Skjærvø 2009, p. ?]
+#   P2  initial w- > b- (wād > bād 'wind', warf > barf 'snow')
+#       [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+#   P3  initial wi- wu- > gu- (wināh > gunāh 'sin', gurg < wurg 'wolf')
+#       [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+#   P4  post-vocalic d > ð, written ذ (ādur > āðar 'fire'); elsewhere d stays d
+#       [Hübschmann 1895, Lautlehre § ?; Skjærvø 2009, p. ?]
+#   P5  final -āy -āg > -ā (pāy > pā 'foot', xwadāy > xudā 'lord', fardāg > fardā 'tomorrow')
+#       [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+#   P6  final -išn > -iš (bālišn > bāliš 'pillow', niyāyišn > niyāyiš 'prayer')
+#       [Hübschmann 1895, Lautlehre § ?; Skjærvø 2009, p. ?]
+#   P7  xš > š (ātaxš > ātaš 'fire')
+#       [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+#   P8  post-vocalic b > w (tābag > tāwa 'griddle', nānbāg > nānwā 'baker')
+#       [Hübschmann 1895, Lautlehre § ?; Skjærvø 2009, p. ?]
+#   P9  initial h- lost before a (hanjaman > anjuman 'assembly')
+#       [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+#   P10 b > f before r and s (abrang > afrang 'splendour', aβesar > afsar 'crown')
+#       [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+#   P11 post-vocalic g > ɣ (drōg > durōɣ 'lie', mog > muɣ 'magus')
+#       [Hübschmann 1895, Lautlehre § ?; Skjærvø 2009, p. ?]
+#
+# HOW THIS FILE WORKS
+# One simultaneous block (first match wins). Mergers branch through the sidecar
+# Classical-Persian.mergers.yaml: a tagged sound maps to its Middle Persian source.
+#
+# REVIEW NOTES
+# - P1 is reversed through the sidecar: each word-final a, iː, uː may or may not have
+#   lost a g. Wiktionary's Classical IPA writes final -a for both -ag and plain -a.
+# - P2 and P3 branch only word-initially, and P3 only before u.
+# - P5 and P1 share the final-vowel branching: final aː may come from aː, aːj or aːɡ.
+# - P6 and P7 share ʃ: a final ʃ may come from ʃ, ʃn or xʃ; ʃ after a vowel elsewhere
+#   from ʃ or xʃ.
+# - P8 branches w only after a vowel; P9 only a word-initial a; P10 only f before r, s.
+# - Round-trip check (Wiktionary's Middle Persian forms in Persian etymologies, MacKenzie
+#   transcription): see the stage notes in the team review for the remaining misses.
+# - Not reversed (vowels only, which Step 5 strips): the prothetic vowel before initial
+#   clusters (brūg > abrū), and vowel alternations such as i ~ a (pidar ~ padar).
+# - Classical eː oː (majhūl) continue Middle Persian ē ō unchanged, so they need no rule.
+
+Symbol aː, eː, iː, oː, uː, xʷ
+
+classical-to-middle:
+    # P11 reversed: ɣ < g (post-vocalic)   [Hübschmann 1895, Lautlehre § ?; Skjærvø 2009, p. ?]
+    ɣ => ɡ
+    # P4 reversed: ð < d (post-vocalic)   [Hübschmann 1895, Lautlehre § ?; Skjærvø 2009, p. ?]
+    ð => d
+    # P1 reversed (merger): final a iː uː < -ag -īg -ūg   [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?; Skjærvø 2009, p. ?]
+    a² => a ɡ / _ $
+    iː² => iː ɡ / _ $
+    uː² => uː ɡ / _ $
+    # P5 reversed (merger): final aː < aː, aːj, aːɡ   [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+    aː² => aː j / _ $
+    aː³ => aː ɡ / _ $
+    # P6 + P7 reversed (merger): final ʃ < ʃ, ʃn, xʃ   [Hübschmann 1895, Lautlehre § ?; Skjærvø 2009, p. ?; Horn 1893, p. ?]
+    ʃ² => ʃ n / _ $
+    ʃ³ => x ʃ / _ $
+    # P7 reversed (merger): ʃ after a vowel < ʃ, xʃ   [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+    ʃ² => x ʃ
+    # P8 reversed (merger): w after a vowel < w, b   [Hübschmann 1895, Lautlehre § ?; Skjærvø 2009, p. ?]
+    w² => b
+    # P9 reversed (merger): initial a < a, ha   [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+    a² => h a / $ _
+    # P10 reversed (merger): f before r, s < f, b   [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+    f² => b
+    # P2 reversed (merger): initial b < b, w   [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+    b² => w / $ _
+    # P3 reversed (merger): initial ɡ before u < ɡ, w   [Hübschmann 1895, Lautlehre § ?; Horn 1893, p. ?]
+    ɡ² => w / $ _

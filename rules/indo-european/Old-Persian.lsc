@@ -1,0 +1,57 @@
+# REVERSED: Old Persian -> Proto-Iranian
+# Source: team addition (tree/additions.yaml); no Index Diachronica section exists.
+#   Drafted by Claude from:
+#   [Skjærvø 2009] Skjærvø, P. O. (2009), "Old Iranian", in Windfuhr, G. (ed.),
+#     The Iranian Languages, London: Routledge, section on historical phonology.
+#   [Kent 1953] Kent, R. G. (1953), Old Persian: Grammar, Texts, Lexicon, 2nd ed.,
+#     New Haven: American Oriental Society, Grammar, phonology.
+#   Each rule carries its own citation (team decision 2026-11-27). Section and page numbers
+#   the drafter could not confirm are written "§ ?" / "p. ?" for the team to fill in.
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Input: Old Persian stems as produced by Middle-Persian.lsc (pitar, daːç, θaːl).
+# Output: Proto-Iranian in IPA. Wiktionary's Proto-Iranian c j are written t͡s d͡z here,
+#   č ǰ are t͡ʃ d͡ʒ, y is j; laryngeals (H) are not restored at this stage.
+#
+# Persian (Middle and New) took many words from Median, the Iranian language of the
+# Medes, rather than from Old Persian itself: asp 'horse' is Median aspa-, beside
+# Old Persian asa-. Where the two differ, this stage reverses both outcomes.
+#
+# Forward changes, Proto-Iranian > Old Persian (and Median):
+#   R1  *c [t͡s] > OP θ (*catam > θata- 'hundred'; Median and Avestan s)
+#       [Skjærvø 2009, p. ?; Kent 1953, § ?]
+#   R2  *j [d͡z] > OP d (*jasta- > dasta- 'hand'); Median z (*buja- > MP buz 'goat')
+#       [Skjærvø 2009, p. ?; Kent 1953, § ?]
+#   R3  *θr > OP ç (*puθra- > puça- 'son'; Median θr > hr: čihr)
+#       [Skjærvø 2009, p. ?; Kent 1953, § ?]
+#   R4  *cw [t͡sw] > Median sp (*acwa- > aspa- 'horse'); OP s (asa-)
+#       [Skjærvø 2009, p. ?; Kent 1953, § ?]
+#   R5  *hw > OP (h)uv- (written huv-; *hwapnah > MP xwamn 'dream')
+#       [Skjærvø 2009, p. ?; Kent 1953, § ?]
+#
+# HOW THIS FILE WORKS
+# One simultaneous block (first match wins). Mergers branch through the sidecar
+# Old-Persian.mergers.yaml: a tagged sound maps to its Proto-Iranian source.
+#
+# REVIEW NOTES
+# - R1 and R2 branch every θ, every d and every z: Old Persian alone cannot tell
+#   inherited θ d from those of *c *j, and Persian z may be Median *j.
+# - R3 is deterministic: Old Persian ç has no other source.
+# - R4 branches only s before p.
+# - Not restored here: laryngeals (Wiktionary's H, e.g. *Hr̩táh), which left no trace in
+#   Old Persian consonants. Proto-Indo-Iranian H is the Proto-Iranian stage's job.
+
+Symbol aː, eː, iː, oː, uː, xʷ, r̩, t͡s, d͡z
+
+old-to-proto-iranian:
+    # R3 reversed: ç < θr   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+    ç => θ r
+    # R5 reversed: initial (h)uw < hw   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+    h u w => h * w / $ _
+    # R4 reversed (merger): s before p < s, *c (with p < w)   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+    s² p => t͡s w
+    # R1 reversed (merger): θ < θ, *c   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+    θ² => t͡s
+    # R2 reversed (merger): d < d, *j; z < z, *j   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+    d² => d͡z
+    z² => d͡z

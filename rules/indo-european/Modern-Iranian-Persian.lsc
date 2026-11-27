@@ -1,0 +1,69 @@
+# REVERSED: Modern Iranian Persian -> Classical Persian
+# Source: team addition (tree/additions.yaml); no Index Diachronica section exists.
+#   Drafted by Claude from Windfuhr, G. & Perry, J. R. (2009), "Persian and Tajik", in
+#   Windfuhr, G. (ed.), The Iranian Languages, London: Routledge. Abbreviated [W&P 2009]
+#   below; page numbers are left as "p. ?" for the team to fill in from the book.
+#   Each rule carries its own citation (team decision 2026-11-27).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Input: Wiktionary's `Iran, formal` IPA after rules/cleanup/fa.yaml (e.g. pedær, mɒːh).
+# Output: Classical Persian as Wiktionary's /Classical-Persian/ IPA writes it (padar, māh).
+#
+# Forward changes, Classical > modern Iranian Persian:
+#   M1  a i u > æ e o; aː > ɒː                         [W&P 2009, "Phonology: vowels"; p. ?]
+#   M2  ay aw > ey ow                                   [W&P 2009, "Phonology: diphthongs"; p. ?]
+#   M3  w > v                                           [W&P 2009, "Phonology: consonants"; p. ?]
+#   M4  ɣ and q merge as one uvular /q/ ([ɢ] ~ [ʁ])     [W&P 2009, "Phonology: consonants"; p. ?]
+#   M5  xʷ > x (xʷaːhar > xɒːhær 'sister')              [W&P 2009, "Phonology: consonants"; p. ?]
+#   M6  ð (spelled ذ) > z (ʔaːðar > ʔɒːzær 'fire')       [W&P 2009, "Phonology: consonants"; p. ?]
+#   M7  n > m before b (ʃanbih > ʃæmbe 'Saturday')      [W&P 2009, "Phonology: assimilation"; p. ?]
+#   M8  eː oː (majhūl vowels) merge with iː uː          [W&P 2009, "Phonology: vowels"; p. ?]
+#   M9  final -a > -e (meːwa > miːve 'fruit')            [W&P 2009, "Phonology: vowels"; p. ?]
+#
+# HOW THIS FILE WORKS
+# One simultaneous block (first match wins at each position), so reversed rules cannot
+# feed each other. Mergers branch through the sidecar Modern-Iranian-Persian.mergers.yaml:
+# a tagged sound (q², x², z², m²) maps to its second Classical source.
+#
+# REVIEW NOTES
+# - Found by the cleanup check (559 inherited nouns, modern vs Classical IPA): every
+#   consonant difference is M3-M7 except three single words, left unreversed:
+#   پهلو pahlaw > pæhluː (final -aw > -uː), چکش t͡ʃakuʃ > t͡ʃækkoʃ (gemination), and a
+#   Classical final -h after -i/-a (ʃanbih) that the modern IPA lacks. Classical IPA writes
+#   that h inconsistently (meːwa 'fruit' has none), so restoring it would only add noise.
+# - M8 is not reversed: it touches vowels only, which Step 5 strips, and branching every
+#   iː uː would double the candidates of most words. Middle Persian rules that need eː oː
+#   would have to branch there instead.
+# - M5 branches x only where Classical xʷ stood: before æ and ɒː (from a, aː), o
+#   (xʷad > xod 'self') and iː (xʷeːʃ > xiːʃ 'self, own').
+# - M6 branches z only after a vowel: Classical ð stood only after vowels.
+# - Initial ʔ: Wiktionary writes a glottal stop before every word-initial vowel, in both
+#   Classical and modern IPA, though it has no historical source in inherited words. The
+#   team chose to keep it in the IPA and remove it here (team decision 2026-11-27). This
+#   output therefore differs from Wiktionary's Classical IPA by that ʔ.
+
+Symbol aː, iː, uː, ɒː, xʷ
+
+modern-to-classical:
+    # Team addition (2026-11-27): drop the notational word-initial glottal stop
+    ʔ => * / $ _
+    # M2 reversed: ey ow < ay aw   [W&P 2009, "Phonology: diphthongs"; p. ?]
+    e j => a j
+    o w => a w
+    # M1 reversed: æ e o < a i u; ɒː < aː   [W&P 2009, "Phonology: vowels"; p. ?]
+    # M9 reversed: final e < a   [W&P 2009, "Phonology: vowels"; p. ?]
+    e => a / _ $
+    æ => a
+    e => i
+    o => u
+    ɒː => aː
+    # M3 reversed: v < w   [W&P 2009, "Phonology: consonants"; p. ?]
+    v => w
+    # M4 reversed (merger): q < q, ɣ   [W&P 2009, "Phonology: consonants"; p. ?]
+    q² => ɣ
+    # M5 reversed (merger): x < x, xʷ   [W&P 2009, "Phonology: consonants"; p. ?]
+    x² => xʷ
+    # M6 reversed (merger): z < z, ð   [W&P 2009, "Phonology: consonants"; p. ?]
+    z² => ð
+    # M7 reversed (merger): m before b < m, n   [W&P 2009, "Phonology: assimilation"; p. ?]
+    m² => n

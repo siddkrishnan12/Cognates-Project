@@ -1,0 +1,48 @@
+# Cleanup table for modern Iranian Persian IPA (languages.yaml `cleanup` for fa).
+# STATUS: DRAFT by Claude, awaiting team review. Team decision 2026-11-27.
+#
+# Wiktionary's `Iran, formal` IPA is phonetic: a template generates it from a
+# transliteration, so its narrow detail is predictable from the plain sounds. This table
+# removes that detail so the reversed rules see one symbol per Persian consonant.
+# It runs in Step 2, after ipa.clean (which already drops stress, syllable dots, tone
+# accents and the parentheses of optional sounds).
+#
+# Each entry is a regular expression (`match`) and its replacement (`replace`), applied in
+# order. The table is written for inherited vocabulary: Persian loans stop at Step 1
+# (languages.yaml `stop_on_loan`), because in a few Arabic loans a superscript ʰ after a
+# consonant is a real h (صبح [sobʰ]) and this table cannot tell it from aspiration.
+# Word-initial ʔ is kept on purpose: the Modern-Iranian-Persian stage removes it.
+#
+# Inventory behind the table (8,348 nouns with Iran IPA; 625 inherited): 63 distinct
+# consonant forms, 36 in inherited nouns, about 25 underlying consonants.
+
+# 1. Dental mark: t̪ d̪ n̪ l̪ -> t d n l (4,429 marks)
+- match: "̪"
+  replace: ""
+# 2. Devoicing ring: b̥ d̥ ɡ̥ l̥ ɢ̥ -> b d ɡ l ɢ (1,488 marks; final devoicing)
+- match: "[̥̊]"
+  replace: ""
+# 3. Palatalization: kʲ ɡʲ -> k ɡ (1,221 marks; k and ɡ before front vowels and finally)
+- match: "ʲ"
+  replace: ""
+# 4. Aspiration of voiceless stops and affricates: pʰ tʰ kʰ qʰ t͡ʃʰ -> p t k q t͡ʃ
+- match: "(t͡ʃ|[ptkq])ʰ"
+  replace: "\\1"
+# 5. Any remaining superscript h is a real h after a vowel: [mɒːʱ] 'moon' -> mɒːh
+- match: "[ʰʱ]"
+  replace: "h"
+# 6. Breathy h -> h (543 in all nouns)
+- match: "ɦ"
+  replace: "h"
+# 7. r variants: ɹ ɾ -> r
+- match: "[ɹɾ]"
+  replace: "r"
+# 8. Uvulars: modern Persian has one uvular stop phoneme, written q (ɢ ʁ are allophones)
+- match: "[ɢʁ]"
+  replace: "q"
+# 9. Nasal place assimilation before consonants: ɲ ŋ ɴ ɱ -> n ([ʔæm.bɒ́ːɹ] stays m: m is phonemic)
+- match: "[ɲŋɴɱ]"
+  replace: "n"
+# 10. Long (geminate) consonants -> two consonants, as Classical IPA writes them (farr)
+- match: "(t͡ʃ|d͡ʒ|[pbtdkɡqʔfvszʃʒxχɣhmnlrjw])ː"
+  replace: "\\1\\1"

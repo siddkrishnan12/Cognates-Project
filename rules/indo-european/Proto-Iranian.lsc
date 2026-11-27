@@ -1,0 +1,63 @@
+# REVERSED: Proto-Iranian -> Proto-Indo-Iranian
+# Source: team addition (tree/additions.yaml); no Index Diachronica section exists.
+#   Drafted by Claude from:
+#   [Skjærvø 2009] Skjærvø, P. O. (2009), "Old Iranian", in Windfuhr, G. (ed.),
+#     The Iranian Languages, London: Routledge, section "From Proto-Indo-Iranian to
+#     Proto-Iranian" (title approximate; § ? / p. ? for the team to fill in).
+#   Each rule carries its own citation (team decision 2026-11-27).
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Input: Proto-Iranian in IPA as produced by Old-Persian.lsc (puθra, d͡zast, xʃaθr, hwat).
+# Output: Proto-Indo-Iranian in the notation of the Sanskrit chain's Proto-Indo-Aryan.lsc,
+#   so Persian and Sanskrit candidates meet in one notation:
+#   tʃ dʒ = palatovelar reflexes (Wiktionary *ć *ȷ́); c ɟ = palatalized velars (*č *ǰ);
+#   voiceless aspirates = stop + h₂.
+#
+# Forward changes, Proto-Indo-Iranian > Proto-Iranian:
+#   S1  *s > *h before vowels and sonorants (*sapta > *hafta 'seven', *swapnas > *hwapnah
+#       'sleep')                                                   [Skjærvø 2009, p. ?]
+#   S2  voiced aspirates lose aspiration (*bʰrātar > *brātar 'brother')
+#                                                                  [Skjærvø 2009, p. ?]
+#   S3  *p *t *k > *f *θ *x before consonants (*sapta > *hafta; *putra > *puθra 'son')
+#                                                                  [Skjærvø 2009, p. ?]
+#   S4  voiceless aspirates *pʰ *tʰ *kʰ > *f *θ *x (*pantʰās > *panθāh 'path')
+#                                                                  [Skjærvø 2009, p. ?]
+#   S5  palatovelar reflexes *ć *ȷ́ > *c *j [t͡s d͡z]; *č *ǰ unchanged [t͡ʃ d͡ʒ]
+#                                                                  [Skjærvø 2009, p. ?]
+#
+# HOW THIS FILE WORKS
+# One simultaneous block (first match wins); no mergers. Contexts decide S3 versus S4.
+#
+# REVIEW NOTES
+# - S1 is reversed everywhere: Proto-Iranian h has no other source.
+# - S2 is not reversed. b d ɡ stay plain rather than branching to bʱ dʱ ɡʱ: the Step 6
+#   cost of a missing aspiration is only 0.25, and branching every voiced stop would
+#   multiply the candidates (team decision pending; noted 2026-11-27).
+# - S3/S4: f θ x before a consonant reverse to p t k; elsewhere to p h₂, t h₂, k h₂.
+# - Laryngeals (H) are not restored: Proto-Iranian kept no consonantal trace of them.
+#   Sanskrit candidates with H pay one insertion (1.8125) against Persian ones.
+# - q (from the modern-Persian ɣ/q branch) has no Proto-Indo-Iranian source and maps to k.
+
+Symbol aː, iː, uː, r̩, t͡s, d͡z, t͡ʃ, d͡ʒ, tʃ, dʒ, h₂, xʷ
+
+Class cons {p, b, t, d, k, ɡ, q, f, θ, x, xʷ, s, z, ʃ, ʒ, h, m, n, r, l, w, j, t͡s, d͡z, t͡ʃ, d͡ʒ, r̩}
+
+proto-iranian-to-pii:
+    # S3 reversed: f θ x before a consonant < p t k   [Skjærvø 2009, p. ?]
+    f => p / _ @cons
+    θ => t / _ @cons
+    x => k / _ @cons
+    # S4 reversed: f θ x elsewhere < voiceless aspirates (stop + h₂)   [Skjærvø 2009, p. ?]
+    f => p h₂
+    θ => t h₂
+    x => k h₂
+    xʷ => k h₂ w
+    # S1 reversed: h < s   [Skjærvø 2009, p. ?]
+    h => s
+    # S5 reversed: c j < ć ȷ́; č ǰ < č ǰ (Sanskrit-chain notation)   [Skjærvø 2009, p. ?]
+    t͡s => tʃ
+    d͡z => dʒ
+    t͡ʃ => c
+    d͡ʒ => ɟ
+    # Team note: q has no Proto-Indo-Iranian source
+    q => k

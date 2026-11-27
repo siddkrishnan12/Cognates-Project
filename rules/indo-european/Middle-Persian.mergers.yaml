@@ -1,0 +1,39 @@
+# Mergers reversed in Middle-Persian.lsc. DRAFT by Claude, awaiting team review.
+# Citations as in the .lsc file; § ? / p. ? for the team to fill in.
+- sound: b
+  after: [a, i, u, aː, eː, iː, oː, uː, r]
+  sources: [b, p]          # Q2 [Skjærvø 2009, p. ?]
+- sound: d
+  after: [a, i, u, aː, eː, iː, oː, uː, r]
+  sources: [d, t]          # Q2 [Skjærvø 2009, p. ?]
+- sound: ɡ
+  after: [a, i, u, aː, eː, iː, oː, uː, r]
+  sources: [ɡ, k]          # Q2 [Skjærvø 2009, p. ?]
+- sound: z
+  after: [a, i, u, aː, eː, iː, oː, uː]
+  sources: [z, t͡ʃ]         # Q2 [Skjærvø 2009, p. ?]
+- sound: j
+  after: [a, i, u, aː, eː, iː, oː, uː]
+  sources: [j, d]          # Q3 [Skjærvø 2009, p. ?]
+- sound: h
+  after: [a, i, u, aː, eː, iː, oː, uː, r]
+  sources: [h, θ]          # Q4 [Skjærvø 2009, p. ?; Kent 1953, § ?]
+- sound: s
+  initial: true
+  sources: [s, θ]          # Q4 [Skjærvø 2009, p. ?; Kent 1953, § ?]
+- sound: s
+  after: [a, i, u, aː, eː, iː, oː, uː]
+  sources: [s, ç]          # Q5 [Skjærvø 2009, p. ?; Kent 1953, § ?]
+- sound: d͡ʒ
+  initial: true
+  sources: [d͡ʒ, j]         # Q6 [Skjærvø 2009, p. ?]
+- sound: ʃ
+  initial: true
+  sources: [ʃ, xʃ]         # Q7 [Skjærvø 2009, p. ?; Kent 1953, § ?]
+- sound: r
+  after: [a, i, u]
+  before: [p, b, t, d, k, ɡ, q, f, w, s, z, ʃ, ʒ, x, xʷ, h, m, n, l, j, t͡ʃ, d͡ʒ, θ, ç, ð, ɣ]
+  sources: [r, r̩]          # Q10 [Skjærvø 2009, p. ?; Kent 1953, § ?]
+- sound: r
+  after: [r]
+  sources: [r, n]          # Q11 [Skjærvø 2009, p. ?]

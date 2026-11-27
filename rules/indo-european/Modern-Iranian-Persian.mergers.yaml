@@ -1,0 +1,14 @@
+# Mergers reversed in Modern-Iranian-Persian.lsc. DRAFT by Claude, awaiting team review.
+# Each entry cites the same source as its rule: [W&P 2009] = Windfuhr & Perry, "Persian and
+# Tajik", in Windfuhr (ed.), The Iranian Languages (2009); p. ? for the team to fill in.
+- sound: q
+  sources: [q, ɣ]                 # M4 [W&P 2009, "Phonology: consonants"; p. ?]
+- sound: x
+  before: [æ, ɒː, o, iː]
+  sources: [x, xʷ]                # M5 [W&P 2009, "Phonology: consonants"; p. ?]
+- sound: z
+  after: [æ, e, o, ɒː, iː, uː]
+  sources: [z, ð]                 # M6 [W&P 2009, "Phonology: consonants"; p. ?]
+- sound: m
+  before: [b]
+  sources: [m, n]                 # M7 [W&P 2009, "Phonology: assimilation"; p. ?]

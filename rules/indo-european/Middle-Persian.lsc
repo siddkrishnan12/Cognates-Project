@@ -1,0 +1,86 @@
+# REVERSED: Middle Persian -> Old Persian
+# Source: team addition (tree/additions.yaml); no Index Diachronica section exists.
+#   Drafted by Claude from:
+#   [Skjærvø 2009] Skjærvø, P. O. (2009), "Middle West Iranian", in Windfuhr, G. (ed.),
+#     The Iranian Languages, London: Routledge, section on historical phonology.
+#   [Kent 1953] Kent, R. G. (1953), Old Persian: Grammar, Texts, Lexicon, 2nd ed.,
+#     New Haven: American Oriental Society, Grammar, phonology.
+#   Each rule carries its own citation (team decision 2026-11-27). Section and page numbers
+#   the drafter could not confirm are written "§ ?" / "p. ?" for the team to fill in.
+# STATUS: DRAFT by Claude, awaiting team review.
+#
+# Input: Middle Persian as produced by Classical-Persian.lsc (pidar, waːd, aːdar).
+# Output: Old Persian stems in IPA, following Kent's transcription (pitar, waːt, drauɡ).
+#
+# Forward changes, Old Persian > Middle Persian:
+#   Q1  final syllables lost (aspa > asp 'horse', pitā > pid 'father')
+#       [Skjærvø 2009, p. ?; Kent 1953, § ?]
+#   Q2  p t k č > b d g z after vowels and r (vāta- > wād 'wind', rauča- > rōz 'day',
+#       fratama- > fradom 'first')        [Skjærvø 2009, p. ?]
+#   Q3  d > y after vowels (pāda- > pāy 'foot')   [Skjærvø 2009, p. ?]
+#   Q4  θ > h after vowels and r (gāθu- > gāh 'place'); initial θ > s (θard- > sāl 'year')
+#       [Skjærvø 2009, p. ?; Kent 1953, § ?]
+#   Q5  ç > s (dāça- > dās 'sickle', puça- > pus 'son')   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+#   Q6  initial y > ǰ (*yašna- > ǰašn 'feast', *yava- > ǰaw 'barley')   [Skjærvø 2009, p. ?]
+#   Q7  initial xš > š (xšāyaθiya- > šāh 'king')   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+#   Q8  ai au > ē ō (drauga- > drōg 'lie', gauša- > gōš 'ear', *kaina- > kēn 'hatred')
+#       [Skjærvø 2009, p. ?; Kent 1953, § ?]
+#   Q9  initial (h)uv- > xw- (huva- > xwad 'self', uvaipašiya- > xwēš 'own')
+#       [Skjærvø 2009, p. ?; Kent 1953, § ?]
+#   Q10 r̩ > ar, ir, ur before a consonant (r̩ta- > ard 'truth', *mr̩tya- > mard 'man')
+#       [Skjærvø 2009, p. ?; Kent 1953, § ?]
+#   Q11 rn > rr (farnah- > farr(ah) 'glory')   [Skjærvø 2009, p. ?]
+#
+# HOW THIS FILE WORKS
+# One simultaneous block (first match wins). Mergers branch through the sidecar
+# Middle-Persian.mergers.yaml: a tagged sound maps to its Old Persian source.
+#
+# REVIEW NOTES
+# - Q1 is not reversed. The lost endings are mostly vowels (stripped in Step 5) or
+#   inflections (-ah, -am, -iš, -uš) that Sanskrit's bare stems lack, so restoring them
+#   would only add insertions in Step 6.
+# - Q2 branches every b d ɡ after a vowel or r, and z after a vowel. This is the stage's
+#   main source of candidates: a word with three such sounds gets 8 variants.
+# - Q4/Q5 share s: initial s may come from θ, other s after a vowel from ç.
+# - Q10 branches every r after a, i or u and before a consonant. Of 571 inherited Persian
+#   nouns, 12 have an ancestor with r̩; leaving r̩ unreversed costs each of them 2.0 in
+#   Step 6 (r vs r̩), against roughly 51 words that branch (team decision 2026-11-27).
+# - Q11 branches only the second r of rr: 2 words branch, 3 nouns gain 2.25.
+# - Not reversed, by team decision 2026-11-27:
+#   - initial dw- (duvara- > dar 'door'): 1 noun would gain 1.8125, but every initial d
+#     (67 words) would branch;
+#   - lost initial syllables (angauza- > gōz 'walnut'): word-specific, with no regular
+#     rule to reverse.
+
+Symbol aː, eː, iː, oː, uː, xʷ, r̩
+
+middle-to-old:
+    # Q8 reversed: ē ō < ai au   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+    eː => a i
+    oː => a u
+    # Q2 reversed (merger): b d ɡ after vowels and r < b d ɡ or p t k   [Skjærvø 2009, p. ?]
+    b² => p
+    d² => t
+    ɡ² => k
+    # Q2 reversed (merger): z after a vowel < z, č   [Skjærvø 2009, p. ?]
+    z² => t͡ʃ
+    # Q3 reversed (merger): y after a vowel < y, d   [Skjærvø 2009, p. ?]
+    j² => d
+    # Q4 reversed (merger): h after vowels and r < h, θ   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+    h² => θ
+    # Q4 reversed (merger): initial s < s, θ   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+    s² => θ / $ _
+    # Q5 reversed (merger): s after a vowel < s, ç   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+    s² => ç
+    # Q6 reversed (merger): initial ǰ < ǰ, y   [Skjærvø 2009, p. ?]
+    d͡ʒ² => j / $ _
+    # Q9 reversed: initial xw < huw (Kent's huv-)   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+    xʷ => h u w / $ _
+    # Q10 reversed (merger): ar ir ur before a consonant < r̩   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+    a r² => * r̩
+    i r² => * r̩
+    u r² => * r̩
+    # Q11 reversed (merger): rr < rn   [Skjærvø 2009, p. ?]
+    r r² => r n
+    # Q7 reversed (merger): initial š < š, xš   [Skjærvø 2009, p. ?; Kent 1953, § ?]
+    ʃ² => x ʃ / $ _
