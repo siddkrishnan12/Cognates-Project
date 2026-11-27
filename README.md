@@ -30,6 +30,7 @@ The reversed sound changes come from [Index Diachronica](https://chridd.nfshost.
 | `nl` | Dutch | Rules not drafted yet |
 | `non` | Old Norse | Rules not drafted yet |
 | `ofs` | Old Frisian | Rules not drafted yet |
+| `fa` | Persian (modern Iranian) | Chain drafted (5 team-added Iranian stages to Proto-Indo-Iranian, then the shared stage to Proto-Indo-European) |
 
 A pair that needs an undrafted stage stops at Step 5 with the message "reversed rules for stage … are not drafted yet." The rule files are drafts awaiting team review.
 
@@ -144,11 +145,11 @@ The tool expects Lexurgy at `tools/lexurgy/bin/lexurgy`.
 
 ### 4. Data
 
-Wiktionary noun data, from the [kaikki.org](https://kaikki.org) dumps (about 3.9 GB; English alone is 3.4 GB):
+Wiktionary noun data, from the [kaikki.org](https://kaikki.org) dumps (about 4 GB; English alone is 3.4 GB):
 
 ```bash
 mkdir -p data/kaikki
-for L in English Gothic "Old Norse" "Old Frisian" Dutch Sanskrit; do
+for L in English Gothic "Old Norse" "Old Frisian" Dutch Sanskrit Persian; do
   N=$(echo "$L" | tr -d ' ')
   E=$(echo "$L" | sed 's/ /%20/g')
   curl -sSL -o "data/kaikki/$N.jsonl" "https://kaikki.org/dictionary/$E/kaikki.org-dictionary-$N.jsonl"
@@ -259,9 +260,12 @@ Compiling needs XeLaTeX with the `forest` and `fontspec` packages, plus three fo
 
 ## Configuration
 
-- **`languages.yaml`** lists the supported languages. Each entry names its Wiktionary file, its stage in the tree, its epitran fallback and optional settings (`prefer_tag`, `epitran_native`). The file's header comment explains each key.
+- **`languages.yaml`** lists the supported languages. Each entry names its Wiktionary file, its stage in the tree, its epitran fallback and optional settings (`prefer_tag`, `prefer_tag_phonetic`, `epitran_native`, `cleanup`, `stop_on_loan`). The file's header comment explains each key.
 - **`rules/indo-european/<Stage>.lsc`** holds one stage's reversed sound changes in Lexurgy syntax. The matching `<Stage>.mergers.yaml` lists the sounds that branch to several ancestral sources.
 - **`rules/symbols.yaml`** maps reconstruction symbols (h₂, ḱ, bʱ, …) to IPA that PanPhon can read in Step 6.
+- **`rules/cleanup/<code>.yaml`** turns a language's narrow phonetic IPA into the plain sounds the reversed rules expect, as ordered regular-expression replacements applied in Step 2. Persian uses one: its modern Iranian IPA marks aspiration, dental stops, palatalization and other predictable details (`[pʰe.d̪ǽɹ]` becomes `pedær`).
+- **`tree/additions.yaml`** lists team-added stages that Index Diachronica lacks, such as the Persian chain below Proto-Indo-Iranian. `cognates tree` merges them into `tree/indo-european.json`, where they are marked `addition: true`. Rebuild the tree after editing this file.
+- **Persian loans:** a Persian noun that Wiktionary marks as borrowed stops at Step 1 (`stop_on_loan`), since the reversed rules cover only inherited sound history.
 
 ## Tests
 
@@ -275,8 +279,8 @@ The tests need the installed data and Lexurgy, and take about a minute.
 
 ```
 cognates/            Python package (CLI and pipeline steps)
-rules/               reversed sound-change rules and the symbol table
-tree/                stage tree built from Index Diachronica
+rules/               reversed sound-change rules, the symbol table and IPA cleanup tables
+tree/                stage tree built from Index Diachronica, plus team-added stages
 tests/               test suite
 languages.yaml       supported-language settings
 data/                downloads and the search index (not in version control)
