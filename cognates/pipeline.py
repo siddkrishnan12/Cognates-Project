@@ -26,9 +26,16 @@ class Word:
 def prepare_word(typed: str, lang: str) -> Word:
     """Steps 1-2."""
     lemma = wiktionary.lemmatize(typed, lang)
+    cfg = wiktionary.language(lang)
+    if cfg.get("stop_on_loan"):
+        from .dataset import classify
+
+        if classify(lemma.entry)[1]:
+            raise PipelineStop(1, f"{lemma.word!r} ({lang}) is a loanword in Wiktionary's etymology; "
+                                  f"{cfg['name']} loans are not reconstructed")
     trans = wiktionary.translation(lemma)
     raw, source = wiktionary.ipa(lemma)
-    return Word(typed, lang, lemma, trans, ipa.clean(raw), source)
+    return Word(typed, lang, lemma, trans, ipa.apply_cleanup(ipa.clean(raw), cfg.get("cleanup")), source)
 
 
 def display(word: Word) -> str:

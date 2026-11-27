@@ -7,6 +7,9 @@ bullet parent is used. Sections without "to" in their title either group
 other sections (containers, skipped) or describe a single process. A process
 becomes a dead-end side branch under its bullet parent, and a language uses it
 only when the language config lists it.
+
+Stages Index Diachronica lacks come from tree/additions.yaml (team additions) and are
+merged in with `addition: true`.
 """
 from __future__ import annotations
 
@@ -17,10 +20,13 @@ from dataclasses import asdict, dataclass, field
 from html.parser import HTMLParser
 from pathlib import Path
 
+import yaml
+
 from .paths import DATA, TREE
 
 SOURCE_HTML = DATA / "diachronica" / "all.html"
 TREE_JSON = TREE / "indo-european.json"
+ADDITIONS_YAML = TREE / "additions.yaml"
 ROOT_NAME = "Proto-Indo-European"
 FAMILY_ITEM = "17"
 
@@ -38,6 +44,7 @@ class Node:
     attribution: str = ""
     rules: list[str] = field(default_factory=list)
     merged: list[str] = field(default_factory=list)
+    addition: bool = False  # team-added stage (tree/additions.yaml), not from Index Diachronica
 
 
 class _TocParser(HTMLParser):
@@ -189,6 +196,25 @@ def build(page: str) -> dict[str, Node]:
     return nodes
 
 
+def add_team_stages(nodes: dict[str, Node], path: Path = ADDITIONS_YAML) -> dict[str, Node]:
+    """Merge the team-added stages from tree/additions.yaml into the tree."""
+    if not path.exists():
+        return nodes
+    for e in yaml.safe_load(path.read_text(encoding="utf-8")) or []:
+        if e["id"] in nodes:
+            raise ValueError(f"team stage {e['id']!r} clashes with an Index Diachronica node")
+        parent = e.get("parent")
+        if parent is not None and parent not in nodes:
+            raise ValueError(f"team stage {e['id']!r}: parent {parent!r} is not in the tree (list parents first)")
+        src, tgt = _split_title(e["title"])
+        if parent is not None and nodes[parent].target != src:
+            raise ValueError(f"team stage {e['id']!r}: title starts at {src!r}, but parent {parent!r} "
+                             f"ends at {nodes[parent].target!r}")
+        nodes[e["id"]] = Node(e["id"], "team", e["title"], src, tgt, None, parent=parent,
+                              attribution=e.get("attribution", ""), addition=True)
+    return nodes
+
+
 def lineage(nodes: dict[str, Node], nid: str) -> list[str]:
     """Stage ids from the given stage up to (not including) the root, youngest first."""
     chain, cur = [], nid
@@ -210,7 +236,8 @@ def nearest_common_ancestor(nodes: dict[str, Node], a: str, b: str) -> str | Non
 def save(nodes: dict[str, Node], path: Path = TREE_JSON) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     data = {
-        "source": "Index Diachronica (https://chridd.nfshost.com/diachronica/all), item 17",
+        "source": "Index Diachronica (https://chridd.nfshost.com/diachronica/all), item 17, "
+                  "plus team-added stages from tree/additions.yaml",
         "license": "CC BY-NC-SA 3.0",
         "root": ROOT_NAME,
         "nodes": {k: asdict(v) for k, v in nodes.items()},
@@ -224,7 +251,7 @@ def load(path: Path = TREE_JSON) -> dict[str, Node]:
 
 
 def main() -> None:
-    nodes = build(SOURCE_HTML.read_text())
+    nodes = add_team_stages(build(SOURCE_HTML.read_text()))
     save(nodes)
     print(f"Wrote {len(nodes)} nodes to {TREE_JSON}")
 

@@ -1,0 +1,30 @@
+# Team-added stages: sound-change stages Index Diachronica lacks.
+# `cognates tree` merges these into tree/indo-european.json, marked `addition: true`.
+# Each stage needs a reversed rule file rules/indo-european/<id>.lsc, with a source
+# citation on every rule (team decision 2026-11-27).
+#
+# Fields: id (rule-file name), title ("X to Y"), parent (stage id whose target is X;
+# null when X is Proto-Indo-European), attribution.
+
+# Persian chain (team decision 2026-11-27): below Index Diachronica 17.10
+# (Proto-Indo-European to Proto-Indo-Iranian).
+- id: Proto-Iranian
+  title: Proto-Indo-Iranian to Proto-Iranian
+  parent: Proto-Indo-Iranian
+  attribution: "Team addition, drafted by Claude from Skjærvø, \"Old Iranian\", in Windfuhr (ed.), The Iranian Languages (2009)"
+- id: Old-Persian
+  title: Proto-Iranian to Old Persian
+  parent: Proto-Iranian
+  attribution: "Team addition, drafted by Claude from Skjærvø, \"Old Iranian\" (2009), and Kent, Old Persian: Grammar, Texts, Lexicon (1953)"
+- id: Middle-Persian
+  title: Old Persian to Middle Persian
+  parent: Old-Persian
+  attribution: "Team addition, drafted by Claude from Skjærvø, \"Middle West Iranian\", in Windfuhr (ed.) (2009), and MacKenzie, A Concise Pahlavi Dictionary (1971)"
+- id: Classical-Persian
+  title: Middle Persian to Classical Persian
+  parent: Middle-Persian
+  attribution: "Team addition, drafted by Claude from Horn, Grundriss der neupersischen Etymologie (1893); Hübschmann, Persische Studien (1895); Windfuhr & Perry, \"Persian and Tajik\", in Windfuhr (ed.) (2009)"
+- id: Modern-Iranian-Persian
+  title: Classical Persian to Modern Iranian Persian
+  parent: Classical-Persian
+  attribution: "Team addition, drafted by Claude from Windfuhr & Perry, \"Persian and Tajik\", in Windfuhr (ed.), The Iranian Languages (2009)"

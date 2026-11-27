@@ -29,11 +29,17 @@ dʱ: dʰ
 ɡʱ: ɡʰ
 ɟʱ: ɟʰ
 ɡʷʱ: ɡʷʰ
-dʒʱ: dʒʰ
+dʒʱ: d͡ʒʰ      # tie bar required: PanPhon reads dʒʰ as d + ʒ and rejects the ʰ
 # Breathy fricatives (Bartholomae's law, Indo-Iranian): PanPhon has no zʰ, so use breathy voice
 zʱ: z̤
 ʐʱ: ʐ̤
 ʒʱ: ʒ̤
+
+# Proto-Indo-Iranian palatal affricates (Index Diachronica / Kobayashi notation, no tie bar).
+# Without the tie, PanPhon reads tʃ dʒ as two segments, so a palatal would count as two
+# consonants in Step 6. Added 2026-11-27, when Persian-Sanskrit pairs first compared at PII.
+tʃ: t͡ʃ
+dʒ: d͡ʒ
 
 # ASCII stand-ins
 g: ɡ

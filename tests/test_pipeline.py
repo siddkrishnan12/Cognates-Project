@@ -412,3 +412,128 @@ def test_product_scores_every_ordered_pair_and_logs_stops(tmp_path):
     assert float(rows[0]["phonetic_distance"]) == 0.0
     skipped = list(csv.DictReader(open(tmp_path / "p_skipped.csv", encoding="utf-8")))
     assert [(s["word1"], s["word2"], s["step"]) for s in skipped] == [("zzzqx", "fadar", "1"), ("zzzqx", "dags", "1")]
+
+
+# Persian groundwork (team decision 2026-11-27) ---------------------------------
+def test_persian_cleanup_table():
+    t = "rules/cleanup/fa.yaml"
+    cases = {"pʰe.d̪ǽɹ": "pedær", "mɒːʱ": "mɒːh", "kʰʲæs": "kæs", "ɹæŋɡʲ̥": "rænɡ",
+             "t͡ʃʰe.ɹɒːɢ̥": "t͡ʃerɒːq", "fæɹ(ː)": "færr", "hol̥": "hol", "ʔæʒ.d̪æ.ɦɒ́ː": "ʔæʒdæhɒː"}
+    for raw, want in cases.items():
+        assert ipa.apply_cleanup(ipa.clean(raw), t) == want, raw
+    assert ipa.apply_cleanup("fɑːðəɹ", None) == "fɑːðəɹ"   # no table: unchanged
+
+
+def test_prefer_tag_phonetic_is_opt_in():
+    from cognates import pipeline
+    w = pipeline.prepare_word("پدر", "fa")
+    assert (w.ipa, w.ipa_source) == ("pedær", "wiktionary-phonetic")   # the Iran IPA, cleaned
+    assert pipeline.prepare_word("father", "en").ipa == "fɑːðəɹ"        # English unchanged
+    # an English noun with RP only in phonetic form keeps the first phonemic IPA
+    lem = wiktionary.lemmatize("Angola", "en")
+    assert wiktionary.ipa(lem)[1] == "wiktionary-phonemic"
+
+
+def test_persian_loans_stop_at_step_1():
+    from cognates import pipeline
+    with pytest.raises(PipelineStop) as stop:
+        pipeline.prepare_word("کتاب", "fa")
+    assert stop.value.step == 1 and "loanword" in stop.value.reason
+
+
+def test_team_stages_join_the_tree(tmp_path):
+    n = tree.load()
+    assert tree.lineage(n, "Modern-Iranian-Persian") == [
+        "Modern-Iranian-Persian", "Classical-Persian", "Middle-Persian", "Old-Persian",
+        "Proto-Iranian", "Proto-Indo-Iranian"]
+    assert n["Proto-Iranian"].addition and not n["Proto-Indo-Iranian"].addition
+    assert tree.nearest_common_ancestor(n, "Modern-Iranian-Persian", "Vedic-Sanskrit") == "Proto-Indo-Iranian"
+    bad = tmp_path / "additions.yaml"
+    bad.write_text("- id: X\n  title: Old Persian to X\n  parent: Proto-Indo-Iranian\n")
+    with pytest.raises(ValueError):
+        tree.add_team_stages(dict(n), bad)   # title source must match the parent's target
+
+
+def test_persian_pairs_reach_step_6():
+    from cognates import pipeline
+    row, d = pipeline.analyze("گرگ", "fa", "वृक", "sa")
+    assert d["ancestor"] == "Proto-Indo-Iranian" and row["phonetic_distance"] == 0.0   # *wr̩ka
+    row, d = pipeline.analyze("مادر", "fa", "mother", "en")
+    assert d["ancestor"] == "Proto-Indo-European" and row["phonetic_distance"] == 0.0
+    assert pipeline.analyze("پدر", "fa", "वृक", "sa")[0]["phonetic_distance"] > 5      # control
+
+
+def test_modern_iranian_persian_stage():
+    res = reverse.reconstruct_many(
+        {w: w for w in ("pedær", "ʔostoxɒːn", "ʔɒːzær", "ʃæmbe", "bɒːq", "miːve", "zowd͡ʒ", "xiːʃ")},
+        ["Modern-Iranian-Persian"])
+    assert res["pedær"] == {"pidar"}                       # vowels a i u < æ e o (Wiktionary also lists pidar)
+    assert "ustuxʷaːn" in res["ʔostoxɒːn"]                 # initial ʔ dropped; x < xʷ before ɒː
+    assert "aːðar" in res["ʔɒːzær"]                        # z < ð after a vowel
+    assert "ʃanba" in res["ʃæmbe"]                         # m < n before b; final e < a
+    assert "baːɣ" in res["bɒːq"]                           # q < ɣ
+    assert res["miːve"] == {"miːwa"}                       # v < w; final e < a
+    assert res["zowd͡ʒ"] == {"zawd͡ʒ"}                      # ow < aw
+    assert "xʷiːʃ" in res["xiːʃ"]                          # x < xʷ before iː
+
+
+def test_classical_persian_stage():
+    path = ["Modern-Iranian-Persian", "Classical-Persian"]
+    res = reverse.reconstruct_many({w: w for w in (
+        "ʔæfsɒːne", "bɒːd", "ɡorɡ", "ʔɒːzær", "pɒː", "bɒːleʃ", "ʔɒːtæʃ", "tɒːve", "ʔænd͡ʒomæn", "ʔæfrænɡ")}, path)
+    assert "afsaːnaɡ" in res["ʔæfsɒːne"]      # P1 final -ag
+    assert "waːd" in res["bɒːd"]              # P2 initial w-
+    assert "wurɡ" in res["ɡorɡ"]              # P3 initial wu-
+    assert "aːdar" in res["ʔɒːzær"]           # P4 ð < d
+    assert "paːj" in res["pɒː"]               # P5 final -āy
+    assert "baːliʃn" in res["bɒːleʃ"]         # P6 -išn
+    assert "aːtaxʃ" in res["ʔɒːtæʃ"]          # P7 xš
+    assert "taːbaɡ" in res["tɒːve"]           # P8 post-vocalic b, with P1
+    assert "hand͡ʒuman" in res["ʔænd͡ʒomæn"]   # P9 initial h-
+    assert "abranɡ" in res["ʔæfrænɡ"]         # P10 b before r
+
+
+def test_middle_persian_stage():
+    path = ["Modern-Iranian-Persian", "Classical-Persian", "Middle-Persian"]
+    res = reverse.reconstruct_many({w: w for w in (
+        "pedær", "bɒːd", "ɡɒːh", "dɒːs", "d͡ʒæʃn", "doruːq", "xod", "ruːz", "ʃɒːh")}, path)
+    assert "pitar" in res["pedær"]          # Q2 t > d after a vowel
+    assert "waːt" in res["bɒːd"]            # Q2, with P2 initial w-
+    assert "ɡaːθ" in res["ɡɒːh"]            # Q4 θ > h
+    assert "daːç" in res["dɒːs"]            # Q5 ç > s
+    assert "jaʃn" in res["d͡ʒæʃn"]           # Q6 initial y > ǰ
+    assert "duruːk" in res["doruːq"]        # P11 g > ɣ, then Q2 k > g
+    assert "huwut" in res["xod"]            # Q9 (h)uv- > xw-
+    assert "ruːt͡ʃ" in res["ruːz"]           # Q2 č > z
+    assert "xʃaːθ" in res["ʃɒːh"]           # Q7 xš- > š-, Q4 θ > h
+
+
+def test_old_persian_stage():
+    path = ["Modern-Iranian-Persian", "Classical-Persian", "Middle-Persian", "Old-Persian"]
+    res = reverse.reconstruct_many({w: w for w in (
+        "dæst", "boz", "ʃæhr", "sæd", "ɡorɡ", "mærd", "færr", "xod")}, path)
+    assert "d͡zast" in res["dæst"]           # R2 OP d < *j
+    assert "bud͡z" in res["boz"]            # R2 Median z < *j
+    assert "xʃaθr" in res["ʃæhr"]           # R3 OP ç < *θr (via MP s, h)
+    assert "t͡sat" in res["sæd"]            # R1 OP θ < *c
+    assert "wr̩k" in res["ɡorɡ"]             # Q10 r̩ (MP stage), P3 w-
+    assert "mr̩t" in res["mærd"]            # Q10 r̩
+    assert "farn" in res["færr"]            # Q11 rn
+    assert "hwut" in res["xod"]             # R5 *hw (vowel u from modern o; PIr *hwata-)
+
+
+def test_proto_iranian_stage():
+    path = ["Modern-Iranian-Persian", "Classical-Persian", "Middle-Persian", "Old-Persian", "Proto-Iranian"]
+    res = reverse.reconstruct_many({w: w for w in ("hæft", "pesær", "dæst", "xɒːb", "boz")}, path)
+    assert res["hæft"] == {"sapt"}          # S1 h < s; S3 f < p before t
+    assert "pitrar" in res["pesær"]         # S3 θ < t before r (OP ç < *θr < *tr)
+    assert "dʒast" in res["dæst"]           # S5 *j < *ȷ́, in the Sanskrit chain's notation
+    assert "swaːb" in res["xɒːb"]           # S1 *hw < *sw
+    assert "budʒ" in res["boz"]             # S5 Median z < *j < *ȷ́
+
+
+def test_pii_affricates_reach_panphon_as_one_segment():
+    # Index Diachronica writes PII palatals without a tie bar; Step 6 must read each as one sound
+    assert distance.prepare("adʒʱi") == "d͡ʒʰ"
+    assert distance.prepare("tʃatam") == "t͡ʃtm"
+    assert ipa.segments(distance.prepare("dʒasta")) == ["d͡ʒ", "s", "t"]

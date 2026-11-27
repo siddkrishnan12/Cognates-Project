@@ -1,5 +1,5 @@
 {
- "source": "Index Diachronica (https://chridd.nfshost.com/diachronica/all), item 17",
+ "source": "Index Diachronica (https://chridd.nfshost.com/diachronica/all), item 17, plus team-added stages from tree/additions.yaml",
  "license": "CC BY-NC-SA 3.0",
  "root": "Proto-Indo-European",
  "nodes": {
@@ -14,7 +14,8 @@
    "kind": "container",
    "attribution": "",
    "rules": [],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Gheg-Albanian": {
    "id": "Gheg-Albanian",
@@ -61,7 +62,8 @@
     "ə → ∅ / _#",
     "c ɟ → tʃ dʒ (for most speakers)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Tosk-Albanian": {
    "id": "Tosk-Albanian",
@@ -108,7 +110,8 @@
     "a e i o → {a,e} (j)e {e,i} a",
     "c ɟ → tʃ dʒ (much less widespread than in Gheg)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Common-Anatolian": {
    "id": "Common-Anatolian",
@@ -136,7 +139,8 @@
     "j → ∅ / #_e (not widely attested)",
     "{{h1,h3}s,s{h1,h3}} → sː (contested)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Hittite": {
    "id": "Hittite",
@@ -166,7 +170,8 @@
     "j → ∅ / V_V",
     "aj aw → ɛː uː / !_{s,n,r,l}"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Luwian": {
    "id": "Luwian",
@@ -203,7 +208,8 @@
     "D R → Dː Rː / ”e_ in U[+open]",
     "{ɛ,e}ː æː → iː aː"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Lycian": {
    "id": "Lycian",
@@ -241,7 +247,8 @@
     "e → a / _U[+u,a]",
     "a → e / _U[+e,i]"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Lydian": {
    "id": "Lydian",
@@ -278,7 +285,8 @@
     "o(ː) eː æː → a(ː) iː aː",
     "Vː → V[-long]"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Palaic": {
    "id": "Palaic",
@@ -308,7 +316,8 @@
     "w → j / “in *díwots > Tiyaz ‘sun-god’; conditioning unknown”",
     "ɛː → iː"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Armenian": {
    "id": "Armenian",
@@ -321,7 +330,8 @@
    "kind": "container",
    "attribution": "",
    "rules": [],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Artsakh-Armenian": {
    "id": "Artsakh-Armenian",
@@ -367,7 +377,8 @@
     "m̩ n̩ r̩ l̩ → am an ar aɫ",
     "V → (?) / _(C)#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Erevan-Armenian": {
    "id": "Erevan-Armenian",
@@ -413,7 +424,8 @@
     "m̩ n̩ r̩ l̩ → am an ar aɫ",
     "V → (?) / _(C)#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Istanbul-Armenian": {
    "id": "Istanbul-Armenian",
@@ -459,7 +471,8 @@
     "m̩ n̩ r̩ l̩ → am an ar aɫ",
     "V → (?) / _(C)#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Kharpert-Armenian": {
    "id": "Kharpert-Armenian",
@@ -505,7 +518,8 @@
     "m̩ n̩ r̩ l̩ → am an ar aɫ",
     "V → (?) / _(C)#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Sebastia-Armenian": {
    "id": "Sebastia-Armenian",
@@ -550,7 +564,8 @@
     "m̩ n̩ r̩ l̩ → am an ar aɫ",
     "V → (?) / _(C)#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Southeast-Armenian": {
    "id": "Southeast-Armenian",
@@ -598,7 +613,8 @@
     "m̩ n̩ r̩ l̩ → am an ar aɫ",
     "V → (?) / _(C)#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Southwest-Armenian": {
    "id": "Southwest-Armenian",
@@ -645,7 +661,8 @@
     "m̩ n̩ r̩ l̩ → am an ar aɫ",
     "V → (?) / _(C)#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Avestan": {
    "id": "Avestan",
@@ -658,7 +675,8 @@
    "kind": "container",
    "attribution": "",
    "rules": [],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Avestan_2": {
    "id": "Avestan_2",
@@ -688,7 +706,8 @@
     "h → ŋ / a_ra",
     "hx → ∅"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Proto-Celtic": {
    "id": "Proto-Celtic",
@@ -727,7 +746,8 @@
     "— e → o / _w",
     "— u → o / _wO"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Old-Irish": {
    "id": "Old-Irish",
@@ -801,7 +821,8 @@
     "VOR → VːR; “this is a tad unclear, because in some instances it didn’t seem to apply”",
     "V → ∅ / #UU(_)U(U(_)U) / unstressed; this “remained as a phonologically conditioned rule in OIr”; “[t]hat’s a little unclear, so let me try and enumerate: in words of more than three syllables, every other vowel (only the even ones) dropped, if it’s unstressed. In some words, syncope didn’t apply because it would create an unwieldy consonant cluster: so PIE *komaktyom → OIr cumachte, not *cumchte”"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Middle-Welsh": {
    "id": "Middle-Welsh",
@@ -853,7 +874,8 @@
     "l r → ɬ r̥ / #_",
     "ɣ → ə / _#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Dacian": {
    "id": "Dacian",
@@ -877,7 +899,8 @@
     "{kʷ,kw} {ɡʷ,ɡw} → tʃ dʒ (→ s~z z ?) / _E",
     "{kʷ,kw} {ɡʷ,ɡw} → k ɡ / else"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Common-Germanic": {
    "id": "Common-Germanic",
@@ -904,7 +927,8 @@
     "eːi {oːi,aːi} → eː oː (?)",
     "eu ou → iu au"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Gothic": {
    "id": "Gothic",
@@ -949,7 +973,8 @@
     "s → r / in “[t]he prep[osition]. us…before r in compounds”",
     "s → ∅ / in “[t]he prep[osition]. us…in compounds before st”, though this seems to have been less common"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "West-Germanic": {
    "id": "West-Germanic",
@@ -968,7 +993,8 @@
     "i u → e o / _%{a,o}",
     "oː → uː / _#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Anglo-Frisian": {
    "id": "Anglo-Frisian",
@@ -996,7 +1022,8 @@
     "h → ∅ / V_V",
     "{i,u} → ∅ / -# ! VC_"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Old-English": {
    "id": "Old-English",
@@ -1014,7 +1041,8 @@
     "{i,u} → ∅/ _# ! V[-long]C_#",
     "k ɣ ɡ → tʃ ʝ dʒ / “in certain complex circumstances”"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Kentish-Middle-English": {
    "id": "Kentish-Middle-English",
@@ -1045,7 +1073,8 @@
     "ɣ → ɡ / #_",
     "ɣ → w / C_V"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Midlands-Middle-English": {
    "id": "Midlands-Middle-English",
@@ -1077,7 +1106,8 @@
     "ɣ → w / C_V",
     "{e,ɑ,o} → ə → ∅ / _#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Early-Modern-English": {
    "id": "Early-Modern-English",
@@ -1103,7 +1133,8 @@
     "əɪ əʊ → aɪ aʊ / “in most of Britain”",
     "eː oː → eɪ oʊ / ! _ɹ"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "American-English": {
    "id": "American-English",
@@ -1134,7 +1165,8 @@
     "w → ∅ / C_ɹ for some C (toward(s), quart(er), sword)",
     "t → ∅ / f_n̩"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Australian-English": {
    "id": "Australian-English",
@@ -1178,7 +1210,8 @@
     "æ → æː / _{n,m,ɡ,ɫ% ! _n,m,ɡ,ɫ}%{j,w} or a form of a strong verb",
     "æ → æː / _d (rare) ! form of a strong verb"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "British-English": {
    "id": "British-English",
@@ -1199,7 +1232,8 @@
     "l → ɫ / “in coda”",
     "oʊ → əʊ"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Northern-Middle-English": {
    "id": "Northern-Middle-English",
@@ -1233,7 +1267,8 @@
     "ɣ → w / C_V",
     "{e,ɑ,o} → ə → ∅ / _#, when unstressed (it appears this sound may also have gone to /ɪ/)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Scots": {
    "id": "Scots",
@@ -1272,7 +1307,8 @@
     "— V → Vː / _{r,F[+voiced],$,#}",
     "— əi → aɪ / _{r,F[+voiced],$,#} (pursuant to the above)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Scots_2": {
    "id": "Scots_2",
@@ -1338,7 +1374,8 @@
     "t → ʔ / _#",
     "u → ʏ"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Falkirk-Scots": {
    "id": "Falkirk-Scots",
@@ -1362,7 +1399,8 @@
     "l → ʟ",
     "ʟ → ʊ / {a,ɛ}_, typically ! _V"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Southern-Middle-English": {
    "id": "Southern-Middle-English",
@@ -1396,7 +1434,8 @@
     "{e,ɑ,o} → ə / _#",
     "e → ∅ / if another /e/ one syllable previous"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Yola": {
    "id": "Yola",
@@ -1416,7 +1455,8 @@
     "ʍ → f (at least one instance of → w, before a high front vowel)",
     "U → U[+ stress] / #U_ (often)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Old-Frisian": {
    "id": "Old-Frisian",
@@ -1434,7 +1474,8 @@
     "aj aw ew → {eː,aː} aː ja",
     "h → ∅ / V_V"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "North-Frisian-Lenition": {
    "id": "North-Frisian-Lenition",
@@ -1449,7 +1490,8 @@
    "rules": [
     "p t k → b d ɡ → v r ɣ / Vː_{V,#}"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Old-Low-Franconian": {
    "id": "Old-Low-Franconian",
@@ -1477,7 +1519,8 @@
     "uː → ʉː (probably, in areas with uː → ʉw / _V)",
     "ei ou → eː oː (except in southeastern dialects; *ei as a result of the umlaut of *ai was not affected)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Middle-Dutch": {
    "id": "Middle-Dutch",
@@ -1503,7 +1546,8 @@
     "{ol,al} {ar,er} or → ɔu aːr oːr / _C[+dental]",
     "V[-long +stress] → Vː / in open syllables (ʏ → {œː,øː} here but this is not phonemically important; there seem to have been qualitative differences between original long vowels and long vowels resulting from this change—lengthened iː seems to have become eː, but lengthened aː merged with original aː); does not affect original long vowels or vowels in diphthongs"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Modern-Dutch": {
    "id": "Modern-Dutch",
@@ -1522,7 +1566,8 @@
     "— x ɣ → {x,χ} {ɣ,x,χ} / in northern dialects",
     "— x ɣ → ç ʝ / in southern dialects (the articles use velar phonemes here but describes them as “front velar”; based on the description and on representations in other articles, the palatal phonemes are used here)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Polder-Dutch-Vowel-Shift": {
    "id": "Polder-Dutch-Vowel-Shift",
@@ -1538,7 +1583,8 @@
     "ɛi œy ʌu → ai ay au",
     "eː øː oː → ɛi œy  ɔu"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Belgian-and-Netherlandish-Dutch-Monophthongization": {
    "id": "Belgian-and-Netherlandish-Dutch-Monophthongization",
@@ -1553,7 +1599,8 @@
    "rules": [
     "ɛi œy ɔu → ɛː œː ɔː"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Standard-German": {
    "id": "Standard-German",
@@ -1594,7 +1641,8 @@
     "ə → ∅ / unstressed, but not in every case",
     "∅ → ə / M_r% (I don’t know what Mr. Ciupak means by 〈M〉)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "High-German-Cosonant-Shift-and-Umlaut": {
    "id": "High-German-Cosonant-Shift-and-Umlaut",
@@ -1621,7 +1669,8 @@
     "{θ,ð} → d",
     "a u o → e y ø / _(C…){i(ː),j}"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Old-Low-German": {
    "id": "Old-Low-German",
@@ -1648,7 +1697,8 @@
     "ɡ → x / _#",
     "F[-voice] → F[+voice] / X[+voiced]_X[+voiced]?"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Proto-Norse": {
    "id": "Proto-Norse",
@@ -1681,7 +1731,8 @@
     "o(u) {ɔ,ɑ,au,ai,æ} {ja,jE,æ(i),e(i),y} → u a i",
     "Vː → V[- long] / ! #U, U#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Old-Norse": {
    "id": "Old-Norse",
@@ -1854,7 +1905,8 @@
     "eː j → e ∅ / Cw_",
     "k → h / #_{v,n}"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Early-Icelandic": {
    "id": "Early-Icelandic",
@@ -1920,7 +1972,8 @@
     "n̥ → m̥ / p_#",
     "Cː → C[- long]"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Orkney-Norn": {
    "id": "Orkney-Norn",
@@ -2001,7 +2054,8 @@
     "i → ɪ / _CC",
     "V[- long] → ∅ / _#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Shetland-Norn": {
    "id": "Shetland-Norn",
@@ -2072,7 +2126,8 @@
     "e eː → {æ,ɛ,e} {(j)ɛ,je}",
     "ey → ø"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Vandalic": {
    "id": "Vandalic",
@@ -2095,7 +2150,8 @@
     "θ ð → t d (not a complete change; apparently due to Latin)",
     "z → ∅ (seems to have been complete by the Sixth Century)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Greek": {
    "id": "Greek",
@@ -2108,7 +2164,8 @@
    "kind": "container",
    "attribution": "It is entirely possible that I utterly failed to interpret the source documents correctly. If so, please do not hesitate to correct me.",
    "rules": [],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Aeolian-Greek": {
    "id": "Aeolian-Greek",
@@ -2136,7 +2193,8 @@
     "Vns → Vːs",
     "n → ∅ / _s"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Attic-Greek": {
    "id": "Attic-Greek",
@@ -2193,7 +2251,8 @@
     "p k → f x / _t",
     "”{i,e}V → j”V"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Boeotian-Greek": {
    "id": "Boeotian-Greek",
@@ -2223,7 +2282,8 @@
     "{eː,ej} ɛː ɑ(ː)j {oj,ɔːj} → iː eː ɛː {y,ø}",
     "oː → uː"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Coan-Greek": {
    "id": "Coan-Greek",
@@ -2252,7 +2312,8 @@
     "n → ∅ / _s",
     "æː → ɛː"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Cretan-Greek": {
    "id": "Cretan-Greek",
@@ -2280,7 +2341,8 @@
     "Vns → Vːs",
     "n → ∅ / _s"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Doric-Greek": {
    "id": "Doric-Greek",
@@ -2311,7 +2373,8 @@
     "tʃ → tː / medial",
     "h → ∅ (in those “dialects of the western fringe of Asia Minor and the near-by islands”)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Elian-Greek": {
    "id": "Elian-Greek",
@@ -2340,7 +2403,8 @@
     "n → ∅ / _s",
     "h → ∅"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Ionic-Greek": {
    "id": "Ionic-Greek",
@@ -2385,7 +2449,8 @@
     "oj → øj → yj (→ yː sometimes)",
     "e o → ɛ ɔ"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Laconian-Greek": {
    "id": "Laconian-Greek",
@@ -2414,7 +2479,8 @@
     "n → ∅ / _s",
     "pʰ tʰ kʰ → f θ x"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Mycenaean-Greek": {
    "id": "Mycenaean-Greek",
@@ -2440,7 +2506,8 @@
     "ts → s",
     "h → ∅"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Hittite_2": {
    "id": "Hittite_2",
@@ -2473,7 +2540,8 @@
     "— e(ː) → a(ː) / _R “sometimes??”",
     "— e(ː) → a(ː) / “when unstressed?”"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Proto-Indo-Iranian": {
    "id": "Proto-Indo-Iranian",
@@ -2507,7 +2575,8 @@
     "o → aː / _CV, “does not affect o2 < eh3”",
     "{e,o,o2,N̊} → a"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Proto-Indo-Aryan": {
    "id": "Proto-Indo-Aryan",
@@ -2546,7 +2615,8 @@
     "Vm → Ṽ / _(#){s,ɕ}",
     "n → ɲ / ɟ_"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Central-Middle-Indo-Aryan": {
    "id": "Central-Middle-Indo-Aryan",
@@ -2577,7 +2647,8 @@
     "Cn → CC / V_V ! C = dʒ",
     "dʒɲ → ɳː / V_V"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Eastern-Middle-Indo-Aryan": {
    "id": "Eastern-Middle-Indo-Aryan",
@@ -2610,7 +2681,8 @@
     "Cn → CC / V_V ! C = dʒ",
     "dʒɲ → ɲː / V_V"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Northwestern-Middle-Indo-Aryan": {
    "id": "Northwestern-Middle-Indo-Aryan",
@@ -2642,7 +2714,8 @@
     "Cn → CC / V_V ! C = dʒ",
     "dʒɲ → ɳː / V_V"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Western-Middle-Indo-Aryan": {
    "id": "Western-Middle-Indo-Aryan",
@@ -2673,7 +2746,8 @@
     "Cn → CC / V_V ! C = dʒ",
     "dʒɲ → ɳː / V_V"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Vedic-Sanskrit": {
    "id": "Vedic-Sanskrit",
@@ -2697,7 +2771,8 @@
     "bzʱ → ps",
     "{pʂ,cʂ,ɟʐʱ,ɡʐʱ} → kʂ"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Classical-Sanskrit": {
    "id": "Classical-Sanskrit",
@@ -2715,7 +2790,8 @@
     "au aːu ai aːi → au oː ai eː / ! _V",
     "w → v"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Proto-Slavic": {
    "id": "Proto-Slavic",
@@ -2757,7 +2833,8 @@
     "sj zj → ʃ ʒ",
     "kj ɡj xj → tʃ ʒ ʃ"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Polish": {
    "id": "Polish",
@@ -2911,7 +2988,8 @@
     "tʲ dʲ → t d / _{l,n,ɲ,r,ʐ}",
     "ɕ ʑ → s z / _C (sometimes)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Old-Russian": {
    "id": "Old-Russian",
@@ -2937,7 +3015,8 @@
     "jь → i",
     "∅ → j / #_a"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Proto-Italic": {
    "id": "Proto-Italic",
@@ -2957,7 +3036,8 @@
     "s → z / medial (I’m assuming between vowels or when *s voiced in PIE)",
     "eu → ou"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Proto-Latino-Falsican": {
    "id": "Proto-Latino-Falsican",
@@ -2983,7 +3063,8 @@
     "m̥ n̥ → em en",
     "e → {e,i}"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Latin": {
    "id": "Latin",
@@ -3098,7 +3179,8 @@
     "C1C2C3C4 → (C3)C4",
     "C1C2C3 → C1C3"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Classical-Latin-vs.-Vulgar-Latin": {
    "id": "Classical-Latin-vs.-Vulgar-Latin",
@@ -3128,7 +3210,8 @@
     "j → ʝː / V_V",
     "“In contrast, Romanian exhibits u, uː → u (and ultimately also ɔ, oː → o); and Sardinian and African Latin underwent a straight merger of the vowels by length without considering quality (e, eː → e; i, iː → i; u, uː → u; etc.)”"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Catalan": {
    "id": "Catalan",
@@ -3247,7 +3330,8 @@
     "ɛ → e / ! _{rː,l,rC[-labial],nr} or _ ? w#",
     "e → ɛ (in Eastern Catalan)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "French": {
    "id": "French",
@@ -3386,7 +3470,8 @@
     "oi → wɛ → wa",
     "oı̃ → wɛ̃"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Italian": {
    "id": "Italian",
@@ -3423,7 +3508,8 @@
     "{skj,stj,sːj → ʃ",
     "tj ks w → ts sː ɡw"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Portuguese": {
    "id": "Portuguese",
@@ -3548,7 +3634,8 @@
     "V0V0 → V0 (irregular)",
     "d → ∅ / V_V (in Portugal)"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Old-Provençal": {
    "id": "Old-Provençal",
@@ -3781,7 +3868,8 @@
     "{d,l} → ∅ / _#",
     "t → ∅ / _# ! “in the preterit of verbs”, though it tended to drop “in strong preterits”"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Rhaeto-Romance": {
    "id": "Rhaeto-Romance",
@@ -3802,7 +3890,8 @@
     "C[+ voiced] → ∅ / V_V (only for obstruents?)",
     "C[- voiced] → C[+ voiced] / V_V"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Romanian": {
    "id": "Romanian",
@@ -3894,7 +3983,8 @@
     "{t,d} → ∅ / n_#",
     "Ci → Cʲ / _# ! R…R_#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Sardinian": {
    "id": "Sardinian",
@@ -3943,7 +4033,8 @@
     "r → urː / #_e / Logudorese",
     "r → arː / #_(j)B / Logudorese"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Spanish": {
    "id": "Spanish",
@@ -4044,7 +4135,8 @@
     "s → ɾ / _θ",
     "kθ → θː"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Proto-Sibellian": {
    "id": "Proto-Sibellian",
@@ -4063,7 +4155,8 @@
     "r̥ → er / _#",
     "eu → ou"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Oscan": {
    "id": "Oscan",
@@ -4078,7 +4171,8 @@
    "rules": [
     "z → r"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Umbrian": {
    "id": "Umbrian",
@@ -4093,7 +4187,8 @@
    "rules": [
     "d → rs / V_V"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Proto-Tocharian": {
    "id": "Proto-Tocharian",
@@ -4146,7 +4241,8 @@
     "ɛ → ə / _$ɨ",
     "”ɨ ”ə ɨ[- stress] ə[- stress] → ɨ a a ə"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Tocharian-A": {
    "id": "Tocharian-A",
@@ -4173,7 +4269,8 @@
     "ə → ∅ / _%",
     "V → ∅ / _#"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
   },
   "Tocharian-B": {
    "id": "Tocharian-B",
@@ -4196,7 +4293,78 @@
     "∅ → t / {N,L}_S",
     "ə → ∅ / _%, when unstressed"
    ],
-   "merged": []
+   "merged": [],
+   "addition": false
+  },
+  "Proto-Iranian": {
+   "id": "Proto-Iranian",
+   "number": "team",
+   "title": "Proto-Indo-Iranian to Proto-Iranian",
+   "source": "Proto-Indo-Iranian",
+   "target": "Proto-Iranian",
+   "bullet_parent": null,
+   "parent": "Proto-Indo-Iranian",
+   "kind": "stage",
+   "attribution": "Team addition, drafted by Claude from Skjærvø, \"Old Iranian\", in Windfuhr (ed.), The Iranian Languages (2009)",
+   "rules": [],
+   "merged": [],
+   "addition": true
+  },
+  "Old-Persian": {
+   "id": "Old-Persian",
+   "number": "team",
+   "title": "Proto-Iranian to Old Persian",
+   "source": "Proto-Iranian",
+   "target": "Old Persian",
+   "bullet_parent": null,
+   "parent": "Proto-Iranian",
+   "kind": "stage",
+   "attribution": "Team addition, drafted by Claude from Skjærvø, \"Old Iranian\" (2009), and Kent, Old Persian: Grammar, Texts, Lexicon (1953)",
+   "rules": [],
+   "merged": [],
+   "addition": true
+  },
+  "Middle-Persian": {
+   "id": "Middle-Persian",
+   "number": "team",
+   "title": "Old Persian to Middle Persian",
+   "source": "Old Persian",
+   "target": "Middle Persian",
+   "bullet_parent": null,
+   "parent": "Old-Persian",
+   "kind": "stage",
+   "attribution": "Team addition, drafted by Claude from Skjærvø, \"Middle West Iranian\", in Windfuhr (ed.) (2009), and MacKenzie, A Concise Pahlavi Dictionary (1971)",
+   "rules": [],
+   "merged": [],
+   "addition": true
+  },
+  "Classical-Persian": {
+   "id": "Classical-Persian",
+   "number": "team",
+   "title": "Middle Persian to Classical Persian",
+   "source": "Middle Persian",
+   "target": "Classical Persian",
+   "bullet_parent": null,
+   "parent": "Middle-Persian",
+   "kind": "stage",
+   "attribution": "Team addition, drafted by Claude from Horn, Grundriss der neupersischen Etymologie (1893); Hübschmann, Persische Studien (1895); Windfuhr & Perry, \"Persian and Tajik\", in Windfuhr (ed.) (2009)",
+   "rules": [],
+   "merged": [],
+   "addition": true
+  },
+  "Modern-Iranian-Persian": {
+   "id": "Modern-Iranian-Persian",
+   "number": "team",
+   "title": "Classical Persian to Modern Iranian Persian",
+   "source": "Classical Persian",
+   "target": "Modern Iranian Persian",
+   "bullet_parent": null,
+   "parent": "Classical-Persian",
+   "kind": "stage",
+   "attribution": "Team addition, drafted by Claude from Windfuhr & Perry, \"Persian and Tajik\", in Windfuhr (ed.), The Iranian Languages (2009)",
+   "rules": [],
+   "merged": [],
+   "addition": true
   }
  }
 }

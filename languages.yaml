@@ -8,6 +8,12 @@
 #   romanization for the Latin-script code to read.
 # prefer_tag: (optional) Step 2 takes the first phonemic IPA carrying this Wiktionary tag,
 #   falling back to the first phonemic IPA.
+# prefer_tag_phonetic: (optional) when true, prefer_tag also matches phonetic [...] IPA,
+#   after the phonemic ones (Persian: the `Iran` IPA is phonetic). Team decision 2026-11-27.
+# cleanup: (optional) a table of replacements applied to the IPA in Step 2, turning narrow
+#   phonetic transcription into the plain segments the reversed rules expect.
+# stop_on_loan: (optional) when true, a noun whose Wiktionary etymology marks it as
+#   borrowed stops at Step 1. Team decision 2026-11-27 (Persian).
 en:
   name: English
   kaikki: English.jsonl
@@ -46,3 +52,13 @@ sa:
   stage: Vedic-Sanskrit
   processes: []
   epitran: null
+fa:
+  name: Persian
+  kaikki: Persian.jsonl
+  stage: Modern-Iranian-Persian
+  processes: []
+  epitran: fas-Arab  # fallback for nouns without IPA; Persian script omits short vowels
+  prefer_tag: Iran
+  prefer_tag_phonetic: true
+  cleanup: rules/cleanup/fa.yaml
+  stop_on_loan: true

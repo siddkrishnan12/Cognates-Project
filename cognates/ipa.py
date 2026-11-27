@@ -45,6 +45,27 @@ def clean(ipa: str) -> str:
     return unicodedata.normalize("NFC", text.split(",")[0].split()[0] if text.strip() else "")
 
 
+@lru_cache(maxsize=None)
+def _cleanup_rules(table: str) -> list[tuple[re.Pattern, str]]:
+    entries = yaml.safe_load((RULES.parent / table).read_text(encoding="utf-8")) or []
+    return [(re.compile(unicodedata.normalize("NFC", e["match"])), unicodedata.normalize("NFC", e["replace"]))
+            for e in entries]
+
+
+def apply_cleanup(ipa: str, table: str | None) -> str:
+    """Apply a language's cleanup table (languages.yaml `cleanup`) to cleaned IPA.
+
+    The table is an ordered list of regular-expression replacements that turn narrow
+    phonetic transcription into the plain segments the reversed rules expect.
+    """
+    if not table:
+        return ipa
+    text = unicodedata.normalize("NFC", ipa)
+    for pattern, replacement in _cleanup_rules(table):
+        text = unicodedata.normalize("NFC", pattern.sub(replacement, text))
+    return text
+
+
 def segments(ipa: str) -> list[str]:
     return _ft().ipa_segs(unicodedata.normalize("NFD", ipa))
 

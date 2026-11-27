@@ -148,7 +148,8 @@ def ipa(lemma: Lemma) -> tuple[str, str]:
     """Step 2: the first phonemic IPA, else the first phonetic IPA, else epitran.
 
     When the language config names a `prefer_tag` (English: Received-Pronunciation),
-    the first phonemic IPA carrying that tag comes first.
+    the first phonemic IPA carrying that tag comes first. With `prefer_tag_phonetic: true`
+    (Persian: Iran), the first phonetic IPA carrying the tag comes next.
     Returns (ipa, source) where source is 'wiktionary-phonemic',
     'wiktionary-phonetic' or 'epitran'.
     """
@@ -157,6 +158,10 @@ def ipa(lemma: Lemma) -> tuple[str, str]:
         for s in lemma.entry["sounds"]:
             if s["ipa"].startswith("/") and prefer in s["tags"]:
                 return _strip_delims(s["ipa"]), "wiktionary-phonemic"
+        if language(lemma.lang).get("prefer_tag_phonetic"):
+            for s in lemma.entry["sounds"]:
+                if s["ipa"].startswith("[") and prefer in s["tags"]:
+                    return _strip_delims(s["ipa"]), "wiktionary-phonetic"
     sounds = [s["ipa"] for s in lemma.entry["sounds"]]
     for s in sounds:
         if s.startswith("/"):
