@@ -77,7 +77,7 @@ def closest(candidates1: set[str], candidates2: set[str],
             if drop_final2 and (cut := _without_final(r2)) and (cut[0] or r1):
                 options.append((r1, cut[0], "", cut[1]))
             for a, b, d1, d2 in options:
-                d = _dist().weighted_feature_edit_distance(a, b)
+                d = _dist().jt_weighted_feature_edit_distance(a, b)
                 if best is None or d < best.distance:
                     best = Closest(d, r1, r2, c1, c2, d1, d2)
     if best is None:
